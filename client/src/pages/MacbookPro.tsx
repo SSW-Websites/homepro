@@ -307,23 +307,44 @@ export const MacbookPro = (): JSX.Element => {
                   Choose the lift that perfectly matches your home&apos;s architecture.
                 </p>
               </div>
-              <a href="#compare" className="flex items-center gap-2 text-[#0c3254] font-bold text-base md:text-lg font-['Manrope',Helvetica] hover:underline whitespace-nowrap" data-testid="link-view-models">
+              <a href="tel:6789099558" className="flex items-center gap-2 text-[#0c3254] font-bold text-base md:text-lg font-['Manrope',Helvetica] hover:underline whitespace-nowrap" data-testid="link-view-models">
                 View Models <ArrowRight className="w-5 h-4" />
               </a>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              {["Straight Stairlift", "Curved Stairlift", "Outdoor Stairlift"].map((name) => (
-                <div key={name} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#eee]" data-testid={`card-product-${name.toLowerCase().replace(/\s/g, '-')}`}>
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img className="w-full h-full object-cover" alt={`${name} installed in a home`} src="/figmaAssets/product-image.jpg" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-[#0c3254] text-xl font-['Plus_Jakarta_Sans',Helvetica] mb-2">{name}</h3>
-                    <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed mb-4">Reliable, quiet operation designed for your comfort and safety.</p>
-                    <a href="tel:6789099558" aria-label={`Learn more about ${name}`} data-testid={`link-learn-more-${name.toLowerCase().replace(/\s/g, '-')}`} className="text-[#0c3254] font-bold text-sm font-['Manrope',Helvetica] flex items-center gap-1 hover:underline">Learn More <ArrowRight className="w-4 h-3" /></a>
+            <div className="grid grid-cols-1 md:grid-cols-[1.7fr_1fr] gap-6" data-testid="product-grid">
+              <div className="bg-[#f9f9f9] rounded-[40px] md:rounded-[46px] overflow-hidden flex flex-col" data-testid="card-product-curved">
+                <div className="p-8 md:p-10">
+                  <h3 className="font-semibold text-[#0c3254] text-2xl md:text-[35px] leading-tight font-['Poppins',Helvetica] mb-3">Curved Stair Lifts</h3>
+                  <p className="text-black text-base md:text-xl font-['Inter',Helvetica] leading-relaxed max-w-lg">Designed for multi-level homes or stairs with turns and landings. A custom masterpiece for your home.</p>
+                </div>
+                <div className="flex-1 min-h-[250px] md:min-h-[380px] overflow-hidden">
+                  <img src="/figmaAssets/curved-stairlift.jpg" alt="Curved stairlift installed in a home" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="bg-[#0c3254] rounded-[40px] md:rounded-[46px] overflow-hidden flex flex-col" data-testid="card-product-straight">
+                <div className="p-8 md:p-10">
+                  <h3 className="font-semibold text-white text-xl md:text-[28px] leading-tight font-['Poppins',Helvetica] mb-3">Straight Stair Lifts</h3>
+                  <p className="text-white/80 text-base md:text-xl font-['Public_Sans',Helvetica] leading-relaxed">The most popular choice for single flights of stairs. Ready for installation next-day.</p>
+                </div>
+                <div className="flex-1 min-h-[200px] md:min-h-[300px] px-6 md:px-8 pb-6 md:pb-8">
+                  <div className="bg-white rounded-[18px] overflow-hidden h-full">
+                    <img src="/figmaAssets/straight-stairlift.jpg" alt="Straight stairlift installed in a home" className="w-full h-full object-cover" />
                   </div>
                 </div>
-              ))}
+              </div>
+            </div>
+            <div className="mt-6">
+              <div className="bg-[#cde1fd] rounded-[40px] md:rounded-[47px] overflow-hidden flex flex-col md:flex-row items-center" data-testid="card-product-outdoor">
+                <div className="p-8 md:p-10 md:pl-16 flex-1">
+                  <h3 className="font-semibold text-[#0c3254] text-2xl md:text-[35px] leading-tight font-['Poppins',Helvetica] mb-3">Outdoor Stair Lifts</h3>
+                  <p className="text-black/80 text-base md:text-xl font-['Public_Sans',Helvetica] leading-relaxed max-w-lg">All-weather durability for porches, garden stairs, or deck access. UV-resistant and waterproof designs.</p>
+                </div>
+                <div className="w-full md:w-[45%] flex-shrink-0 px-6 md:px-8 pb-6 md:pb-8 md:py-8">
+                  <div className="bg-white rounded-[18px] overflow-hidden">
+                    <img src="/figmaAssets/outdoor-stairlift.jpg" alt="Outdoor stairlift installed on exterior stairs" className="w-full h-auto object-cover aspect-video" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
