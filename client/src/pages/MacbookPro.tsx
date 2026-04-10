@@ -69,7 +69,7 @@ export const MacbookPro = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-[#f9f9f9] overflow-hidden w-full min-h-screen flex flex-col">
+    <div className="bg-[#f9f9f9] w-full min-h-screen flex flex-col overflow-x-hidden">
       <header className="sticky top-0 z-50">
         <div className="w-full bg-[#0c3254] py-4 px-4" data-testid="announcement-bar">
           <p className="text-white text-center text-xs sm:text-sm md:text-lg tracking-[1.84px] leading-snug font-normal font-['Inter',Helvetica]">
