@@ -241,7 +241,7 @@ export const MacbookPro = (): JSX.Element => {
             </div>
             <div className="flex-1 max-w-lg lg:max-w-none">
               <div className="rounded-xl overflow-hidden shadow-[0px_24px_40px_-10px_rgba(26,28,28,0.05)]">
-                <img src="/figmaAssets/why-choose-stairlift.jpg" alt="Stairlift chair installed in a home" className="w-full h-auto object-cover" />
+                <img src="/figmaAssets/why-choose-stairlift.png" alt="Stairlift chair installed in a home" className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>
