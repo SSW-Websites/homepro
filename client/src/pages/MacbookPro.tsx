@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { useRef, useState } from "react";
-import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -63,6 +63,7 @@ export const MacbookPro = (): JSX.Element => {
   const reviewSliderRef = useRef<HTMLDivElement>(null);
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollReview = (direction: "left" | "right") => {
     const slider = reviewSliderRef.current;
@@ -454,11 +455,16 @@ export const MacbookPro = (): JSX.Element => {
             <h2 className="font-bold text-[#0c3254] text-2xl sm:text-3xl md:text-[45px] text-center font-['Plus_Jakarta_Sans',Helvetica] mb-10 md:mb-14">
               Clear Answers for Your <br className="lg:hidden" />Peace of Mind
             </h2>
-            <div className="flex flex-col gap-6 md:gap-8">
-              {faqs.map((faq) => (
-                <div key={faq.q} className="bg-white rounded-2xl p-6 md:p-10" data-testid={`faq-${faqs.indexOf(faq)}`}>
-                  <h3 className="font-semibold text-[#0c3254] text-lg md:text-xl font-['Inter',Helvetica] mb-2">{faq.q}</h3>
-                  <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">{faq.a}</p>
+            <div className="flex flex-col gap-4 md:gap-5">
+              {faqs.map((faq, idx) => (
+                <div key={faq.q} className="bg-white rounded-2xl overflow-hidden" data-testid={`faq-${idx}`}>
+                  <button onClick={() => setOpenFaq(openFaq === idx ? null : idx)} className="w-full flex items-center justify-between p-6 md:p-10 text-left cursor-pointer" data-testid={`faq-toggle-${idx}`}>
+                    <h3 className="font-semibold text-[#0c3254] text-lg md:text-xl font-['Inter',Helvetica] pr-4">{faq.q}</h3>
+                    <ChevronDown className={`w-6 h-6 text-[#0c3254] flex-shrink-0 transition-transform duration-300 ${openFaq === idx ? "rotate-180" : ""}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${openFaq === idx ? "max-h-96 pb-6 md:pb-10" : "max-h-0"}`}>
+                    <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed px-6 md:px-10">{faq.a}</p>
+                  </div>
                 </div>
               ))}
             </div>
