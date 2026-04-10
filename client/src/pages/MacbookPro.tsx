@@ -214,6 +214,87 @@ export const MacbookPro = (): JSX.Element => {
           </div>
         </section>
 
+        {/* Why Choose HomePro Section */}
+        <section className="w-full bg-white py-14 md:py-20 px-4 md:px-12" data-testid="section-why-choose">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+            <div className="flex-1 max-w-xl">
+              <h2 className="font-semibold text-[#00328c] text-2xl sm:text-3xl md:text-[36px] leading-tight font-['Poppins',Helvetica] mb-8">
+                Why thousands of families choose HomePro Mobility
+              </h2>
+              <div className="flex flex-col gap-10">
+                {[
+                  { icon: "/figmaAssets/icon-local-team.png", title: "Local Team, Not a Call Center", desc: "When you call us, you speak to someone who knows your neighborhood and can be at your door within 24 hours." },
+                  { icon: "/figmaAssets/icon-no-pressure.png", title: "No-Pressure Guidance", desc: "We provide the facts and the figures. You make the decision on your own timeline. No aggressive follow-ups." },
+                  { icon: "/figmaAssets/icon-fast-path.png", title: "The Fast Path to Safety", desc: "From first call to full installation, we prioritize speed without sacrificing the quality of the fit." },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-6 items-start">
+                    <div className="w-12 h-12 rounded-full bg-[rgba(0,50,140,0.1)] flex items-center justify-center flex-shrink-0">
+                      <img src={item.icon} alt="" className="w-6 h-auto object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-normal text-[#1a1c1c] text-lg md:text-xl font-['Inter',Helvetica] mb-2">{item.title}</h3>
+                      <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex-1 max-w-lg lg:max-w-none">
+              <div className="rounded-xl overflow-hidden shadow-[0px_24px_40px_-10px_rgba(26,28,28,0.05)]">
+                <img src="/figmaAssets/why-choose-stairlift.jpg" alt="Stairlift chair installed in a home" className="w-full h-auto object-cover" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Google Reviews Section */}
+        <section className="w-full bg-white pb-14 md:pb-20 px-4 md:px-12" data-testid="section-reviews">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+              <div>
+                <h2 className="font-semibold text-[#1a1c1c] text-xl md:text-2xl font-['Inter',Helvetica] mb-2">Customer reviews on Google</h2>
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map((s) => (
+                      <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    ))}
+                  </div>
+                  <span className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica]">5.0 rating of 710 reviews</span>
+                </div>
+              </div>
+              <button
+                onClick={() => quoteFormRef.current?.scrollIntoView({ behavior: "smooth" })}
+                className="bg-[#0c3254] text-white font-semibold text-sm md:text-base px-8 py-3 rounded-full hover:bg-[#0a2a47] transition-colors uppercase tracking-wider font-['Inter',Helvetica]"
+                data-testid="button-get-quote-reviews"
+              >
+                Get Your Free Quote
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[1,2,3].map((i) => (
+                <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 md:p-8 border border-[#eee]" data-testid={`card-review-${i}`}>
+                  <div className="flex gap-0.5 mb-4">
+                    {[1,2,3,4,5].map((s) => (
+                      <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    ))}
+                  </div>
+                  <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
+                  <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed mb-6">
+                    The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div>
+                      <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
+                      <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
+                    </div>
+                  </div>
+                  <img src="/figmaAssets/reviewer-avatar.png" alt="Nathan Scott" className="w-8 h-8 rounded-full mt-3" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Product Showcase Section */}
         <section className="w-full bg-[#f3f3f3] py-14 md:py-20 px-4 md:px-12" data-testid="section-product-showcase">
           <div className="max-w-7xl mx-auto">
