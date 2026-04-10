@@ -20,6 +20,7 @@ export type User = typeof users.$inferSelect;
 export const leads = pgTable("leads", {
   id: serial("id").primaryKey(),
   fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
   phoneNumber: text("phone_number").notNull(),
   zipCode: text("zip_code").notNull(),
   createdAt: timestamp("created_at").defaultNow(),

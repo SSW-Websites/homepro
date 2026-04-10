@@ -1,7 +1,6 @@
 import { Label } from "@/components/ui/label";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, ArrowRight } from "lucide-react";
-import { apiRequest } from "@/lib/queryClient";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -9,6 +8,7 @@ import iconWrench from "@assets/Icon_1775843559614.png";
 
 const formFields = [
   { id: "fullName", label: "FULL NAME", placeholder: "John Doe", type: "text" },
+  { id: "email", label: "EMAIL", placeholder: "john@example.com", type: "email" },
   { id: "phoneNumber", label: "PHONE NUMBER", placeholder: "(555) 000-0000", type: "tel" },
   { id: "zipCode", label: "ZIP CODE", placeholder: "30301", type: "text" },
 ];
@@ -59,27 +59,10 @@ const faqs = [
 
 export const MacbookPro = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
-  const [formData, setFormData] = useState({ fullName: "", phoneNumber: "", zipCode: "" });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
 
   const scrollToQuoteForm = () => {
     quoteFormRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.fullName || !formData.phoneNumber || !formData.zipCode) return;
-    setSubmitting(true);
-    try {
-      await apiRequest("POST", "/api/leads", formData);
-      setSubmitted(true);
-      setFormData({ fullName: "", phoneNumber: "", zipCode: "" });
-    } catch (err) {
-      console.error("Failed to submit lead:", err);
-    } finally {
-      setSubmitting(false);
-    }
   };
 
   return (
@@ -151,18 +134,18 @@ export const MacbookPro = (): JSX.Element => {
                     </div>
                     <h3 className="font-semibold text-[#0c3254] text-xl font-['Poppins',Helvetica]">Thank You!</h3>
                     <p className="text-[#434654] text-center font-['Inter',Helvetica]">A mobility specialist will contact you shortly.</p>
-                    <button onClick={() => setSubmitted(false)} data-testid="button-new-quote" className="text-[#eb5c44] font-semibold hover:underline font-['Inter',Helvetica]">Submit another request</button>
+                    <a href="/" data-testid="button-new-quote" className="text-[#eb5c44] font-semibold hover:underline font-['Inter',Helvetica]">Submit another request</a>
                   </div>
                 ) : (
                   <>
-                    <form className="flex flex-col gap-4 pt-4" onSubmit={handleSubmit}>
+                    <form action="/api/leads" method="POST" className="flex flex-col gap-4 pt-4">
                       {formFields.map((field) => (
                         <div key={field.id} className="flex flex-col gap-1">
                           <Label htmlFor={field.id} className="text-[#434654] text-sm tracking-wide font-['Inter',Helvetica]">{field.label}</Label>
-                          <input id={field.id} type={field.type} placeholder={field.placeholder} data-testid={`input-${field.id}`} required value={formData[field.id as keyof typeof formData]} onChange={(e) => setFormData(prev => ({ ...prev, [field.id]: e.target.value }))} className="w-full px-4 py-4 bg-[#eeeeee] rounded-lg text-lg font-['Inter',Helvetica] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-[#0c3254]/30" />
+                          <input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} data-testid={`input-${field.id}`} required className="w-full px-4 py-4 bg-[#eeeeee] rounded-lg text-lg font-['Inter',Helvetica] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-[#0c3254]/30" />
                         </div>
                       ))}
-                      <button type="submit" disabled={submitting} data-testid="button-submit-quote" className="w-full py-4 bg-[#eb5c44] rounded-full font-bold text-white text-lg md:text-xl shadow-md hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica] disabled:opacity-60 disabled:cursor-not-allowed">{submitting ? "Sending..." : "GET YOUR FREE QUOTE"}</button>
+                      <input type="submit" value="GET YOUR FREE QUOTE" data-testid="button-submit-quote" className="w-full py-4 bg-[#eb5c44] rounded-full font-bold text-white text-lg md:text-xl shadow-md hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica]" />
                     </form>
                     <p className="text-center text-[#434654] text-xs italic pt-2 font-['Inter',Helvetica]">No-pressure guarantee. We respect your privacy.</p>
                   </>

@@ -8,12 +8,29 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   app.post("/api/leads", async (req, res) => {
-    const parsed = insertLeadSchema.safeParse(req.body);
+    const data = {
+      fullName: req.body.fullName || req.body.full_name || "",
+      email: req.body.email || "",
+      phoneNumber: req.body.phoneNumber || req.body.phone_number || "",
+      zipCode: req.body.zipCode || req.body.zip_code || "",
+    };
+
+    const parsed = insertLeadSchema.safeParse(data);
     if (!parsed.success) {
-      return res.status(400).json({ error: parsed.error.flatten() });
+      const accept = req.headers.accept || "";
+      if (accept.includes("application/json")) {
+        return res.status(400).json({ error: parsed.error.flatten() });
+      }
+      return res.redirect("/?error=1");
     }
+
     const lead = await storage.createLead(parsed.data);
-    return res.status(201).json(lead);
+
+    const accept = req.headers.accept || "";
+    if (accept.includes("application/json")) {
+      return res.status(201).json(lead);
+    }
+    return res.redirect("/?submitted=1");
   });
 
   app.get("/api/leads", async (_req, res) => {
