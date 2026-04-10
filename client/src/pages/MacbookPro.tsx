@@ -402,10 +402,10 @@ export const MacbookPro = (): JSX.Element => {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
               <div>
-                <h2 className="font-semibold text-[#0c3254] text-3xl sm:text-4xl md:text-5xl lg:text-[60px] tracking-tight font-['Poppins',Helvetica] leading-tight">
+                <h2 className="font-semibold text-[#0c3254] text-3xl sm:text-4xl md:text-5xl lg:text-[60px] tracking-tight font-['Poppins',Helvetica] leading-tight text-center lg:text-left">
                   Engineered for Reliability
                 </h2>
-                <p className="text-[#424752] text-base md:text-xl font-['Public_Sans',Helvetica] mt-4">
+                <p className="text-[#424752] text-base md:text-xl font-['Public_Sans',Helvetica] mt-4 text-center lg:text-left">
                   Choose the lift that perfectly matches your home&apos;s architecture.
                 </p>
               </div>
