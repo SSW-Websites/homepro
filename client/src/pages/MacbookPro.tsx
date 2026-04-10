@@ -100,7 +100,7 @@ export const MacbookPro = (): JSX.Element => {
               <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed font-normal font-['Inter',Helvetica] max-w-xl">
                 If the stairs have cut off part of your home, talk to a real local stairlift specialist today. We&apos;ll help you understand your options and find the right next step.
               </p>
-              <a href="tel:6789099558" data-testid="link-call-hero" className="flex items-center justify-center w-full lg:w-fit px-8 sm:px-10 py-4 sm:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-base sm:text-lg md:text-xl tracking-wide font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
+              <a href="tel:6789099558" data-testid="link-call-hero" className="inline-flex items-center justify-center w-fit px-8 sm:px-10 py-4 sm:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-base sm:text-lg md:text-xl tracking-wide font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
                 CALL NOW 678-909-9558
               </a>
               <div className="hidden lg:flex items-center gap-4 flex-wrap">
