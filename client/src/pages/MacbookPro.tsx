@@ -232,7 +232,7 @@ export const MacbookPro = (): JSX.Element => {
                       <img src={item.icon} alt="" className="w-6 h-auto object-contain" />
                     </div>
                     <div>
-                      <h3 className="font-normal text-[#1a1c1c] text-lg md:text-xl font-['Inter',Helvetica] mb-2">{item.title}</h3>
+                      <h3 className="font-bold text-[#1a1c1c] text-lg md:text-xl font-['Inter',Helvetica] mb-2">{item.title}</h3>
                       <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
