@@ -223,9 +223,9 @@ export const MacbookPro = (): JSX.Element => {
               </h2>
               <div className="flex flex-col gap-10">
                 {[
-                  { icon: "/figmaAssets/icon-local-team.png", title: "Local Team, Not a Call Center", desc: "When you call us, you speak to someone who knows your neighborhood and can be at your door within 24 hours." },
-                  { icon: "/figmaAssets/icon-no-pressure.png", title: "No-Pressure Guidance", desc: "We provide the facts and the figures. You make the decision on your own timeline. No aggressive follow-ups." },
-                  { icon: "/figmaAssets/icon-fast-path.png", title: "The Fast Path to Safety", desc: "From first call to full installation, we prioritize speed without sacrificing the quality of the fit." },
+                  { icon: iconPeople, title: "Local Team, Not a Call Center", desc: "When you call us, you speak to someone who knows your neighborhood and can be at your door within 24 hours." },
+                  { icon: "/figmaAssets/icon-hand-heart.png", title: "No-Pressure Guidance", desc: "We provide the facts and the figures. You make the decision on your own timeline. No aggressive follow-ups." },
+                  { icon: "/figmaAssets/icon-lightning.png", title: "The Fast Path to Safety", desc: "From first call to full installation, we prioritize speed without sacrificing the quality of the fit." },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-6 items-start">
                     <div className="w-12 h-12 rounded-full bg-[rgba(0,50,140,0.1)] flex items-center justify-center flex-shrink-0">
