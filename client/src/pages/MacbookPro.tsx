@@ -1,6 +1,7 @@
 import { Label } from "@/components/ui/label";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, ArrowRight } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -58,9 +59,27 @@ const faqs = [
 
 export const MacbookPro = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
+  const [formData, setFormData] = useState({ fullName: "", phoneNumber: "", zipCode: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const scrollToQuoteForm = () => {
     quoteFormRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.fullName || !formData.phoneNumber || !formData.zipCode) return;
+    setSubmitting(true);
+    try {
+      await apiRequest("POST", "/api/leads", formData);
+      setSubmitted(true);
+      setFormData({ fullName: "", phoneNumber: "", zipCode: "" });
+    } catch (err) {
+      console.error("Failed to submit lead:", err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -125,16 +144,29 @@ export const MacbookPro = (): JSX.Element => {
               <div className="flex flex-col gap-3 p-8 md:p-9 bg-white rounded-2xl shadow-xl border border-[#c3c6d64c]">
                 <h2 className="font-semibold text-[#0c3254] text-2xl md:text-[28px] leading-snug text-center font-['Poppins',Helvetica]">Get Your Free Quote</h2>
                 <p className="text-[#434654] text-base md:text-lg text-center leading-snug font-['Inter',Helvetica]">Enter your details and a mobility specialist will contact you shortly.</p>
-                <form className="flex flex-col gap-4 pt-4" onSubmit={(e) => e.preventDefault()}>
-                  {formFields.map((field) => (
-                    <div key={field.id} className="flex flex-col gap-1">
-                      <Label htmlFor={field.id} className="text-[#434654] text-sm tracking-wide font-['Inter',Helvetica]">{field.label}</Label>
-                      <input id={field.id} type={field.type} placeholder={field.placeholder} data-testid={`input-${field.id}`} className="w-full px-4 py-4 bg-[#eeeeee] rounded-lg text-lg font-['Inter',Helvetica] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-[#0c3254]/30" />
+                {submitted ? (
+                  <div className="flex flex-col items-center gap-4 py-8" data-testid="quote-success">
+                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     </div>
-                  ))}
-                  <button type="submit" data-testid="button-submit-quote" className="w-full py-4 bg-[#eb5c44] rounded-full font-bold text-white text-lg md:text-xl shadow-md hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica]">GET YOUR FREE QUOTE</button>
-                </form>
-                <p className="text-center text-[#434654] text-xs italic pt-2 font-['Inter',Helvetica]">No-pressure guarantee. We respect your privacy.</p>
+                    <h3 className="font-semibold text-[#0c3254] text-xl font-['Poppins',Helvetica]">Thank You!</h3>
+                    <p className="text-[#434654] text-center font-['Inter',Helvetica]">A mobility specialist will contact you shortly.</p>
+                    <button onClick={() => setSubmitted(false)} data-testid="button-new-quote" className="text-[#eb5c44] font-semibold hover:underline font-['Inter',Helvetica]">Submit another request</button>
+                  </div>
+                ) : (
+                  <>
+                    <form className="flex flex-col gap-4 pt-4" onSubmit={handleSubmit}>
+                      {formFields.map((field) => (
+                        <div key={field.id} className="flex flex-col gap-1">
+                          <Label htmlFor={field.id} className="text-[#434654] text-sm tracking-wide font-['Inter',Helvetica]">{field.label}</Label>
+                          <input id={field.id} type={field.type} placeholder={field.placeholder} data-testid={`input-${field.id}`} required value={formData[field.id as keyof typeof formData]} onChange={(e) => setFormData(prev => ({ ...prev, [field.id]: e.target.value }))} className="w-full px-4 py-4 bg-[#eeeeee] rounded-lg text-lg font-['Inter',Helvetica] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-[#0c3254]/30" />
+                        </div>
+                      ))}
+                      <button type="submit" disabled={submitting} data-testid="button-submit-quote" className="w-full py-4 bg-[#eb5c44] rounded-full font-bold text-white text-lg md:text-xl shadow-md hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica] disabled:opacity-60 disabled:cursor-not-allowed">{submitting ? "Sending..." : "GET YOUR FREE QUOTE"}</button>
+                    </form>
+                    <p className="text-center text-[#434654] text-xs italic pt-2 font-['Inter',Helvetica]">No-pressure guarantee. We respect your privacy.</p>
+                  </>
+                )}
               </div>
             </div>
           </div>
