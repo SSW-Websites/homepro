@@ -33,17 +33,6 @@ const roadmapSteps = [
   { icon: ShieldCheck, title: "6. Lifetime Warranty", desc: "Peace of mind guaranteed for as long as you own your stairlift." },
 ];
 
-const comparisonData = {
-  headers: ["Feature", "Straight Lift", "Curved Lift", "Outdoor Lift"],
-  rows: [
-    ["Weight Capacity", "Up to 300 lbs", "Up to 350 lbs", "Up to 300 lbs"],
-    ["Rail Type", "Anodized Aluminum", "Custom Steel Pipe", "Weatherproof Alloy"],
-    ["Installation Time", "2-3 Hours", "4-6 Hours", "3-4 Hours"],
-    ["Weather Resistance", "Standard", "Standard", "IPX5 Rated"],
-    ["Power Supply", "Battery + DC Charge", "Battery + DC Charge", "Reinforced Battery System"],
-  ],
-};
-
 const faqs = [
   {
     q: "How much does a stairlift actually cost?",
@@ -248,51 +237,6 @@ export const MacbookPro = (): JSX.Element => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Compare Models Section */}
-        <section id="compare" className="w-full bg-[#f3f3f3] py-14 md:py-20 px-4 md:px-12" data-testid="section-compare">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-extrabold text-[#0c3254] text-2xl sm:text-3xl md:text-5xl text-center tracking-tight font-['Manrope',Helvetica] mb-3">Compare Our Models</h2>
-            <p className="text-[#424752] text-base md:text-xl text-center font-['Public_Sans',Helvetica] mb-10">Find the perfect balance of performance and features for your home.</p>
-            <div className="bg-white rounded-3xl md:rounded-[50px] shadow-md border border-[#e7e1dc] overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[600px]">
-                  <caption className="sr-only">Comparison of stairlift models by feature</caption>
-                  <thead>
-                    <tr className="bg-[#0c3254]">
-                      {comparisonData.headers.map((h, i) => (
-                        <th key={h} scope="col" className={`text-left text-white font-bold text-sm md:text-lg font-['Manrope',Helvetica] px-6 md:px-10 py-6 md:py-8 ${i === 0 ? 'rounded-tl-3xl md:rounded-tl-[50px]' : ''} ${i === comparisonData.headers.length - 1 ? 'rounded-tr-3xl md:rounded-tr-[50px]' : ''}`}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonData.rows.map((row, ri) => (
-                      <tr key={ri} className="border-b border-[#e7e1dc]">
-                        {row.map((cell, ci) => ci === 0 ? (
-                          <th key={ci} scope="row" className="px-6 md:px-10 py-4 md:py-6 text-sm md:text-base font-bold text-[#0c3254] font-['Manrope',Helvetica]">{cell}</th>
-                        ) : (
-                          <td key={ci} className={`px-6 md:px-10 py-4 md:py-6 text-sm md:text-base text-[#1d1b18] font-['Public_Sans',Helvetica] ${cell === 'IPX5 Rated' ? 'font-semibold text-[#005058]' : ''}`}>{cell}</td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr className="bg-[#0c3254]">
-                      <td className="px-6 md:px-10 py-6 md:py-8"></td>
-                      {["Straight Lift", "Curved Lift", "Outdoor Lift"].map((name) => (
-                        <td key={name} className="px-6 md:px-10 py-6 md:py-8">
-                          <a href="tel:6789099558" aria-label={`Learn more about ${name}`} data-testid={`link-learn-more-${name.toLowerCase().replace(/\s/g, '-')}`} className="text-white font-bold text-sm md:text-base font-['Manrope',Helvetica] flex items-center gap-1 hover:underline">
-                            Learn More <ArrowRight className="w-3 h-3" />
-                          </a>
-                        </td>
-                      ))}
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
             </div>
           </div>
         </section>
