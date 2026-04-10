@@ -317,7 +317,7 @@ export const MacbookPro = (): JSX.Element => {
                   <h3 className="font-semibold text-[#0c3254] text-2xl md:text-[35px] leading-tight font-['Poppins',Helvetica] mb-3">Curved Stair Lifts</h3>
                   <p className="text-black text-base md:text-xl font-['Inter',Helvetica] leading-relaxed max-w-lg">Designed for multi-level homes or stairs with turns and landings. A custom masterpiece for your home.</p>
                 </div>
-                <div className="h-[200px] md:h-[280px] overflow-hidden">
+                <div className="h-[220px] md:h-[320px] overflow-hidden">
                   <img src="/figmaAssets/curved-stairlift.jpg" alt="Curved stairlift installed in a home" className="w-full h-full object-cover" />
                 </div>
               </div>
@@ -326,7 +326,7 @@ export const MacbookPro = (): JSX.Element => {
                   <h3 className="font-semibold text-white text-xl md:text-[28px] leading-tight font-['Poppins',Helvetica] mb-3">Straight Stair Lifts</h3>
                   <p className="text-white/80 text-base md:text-xl font-['Public_Sans',Helvetica] leading-relaxed">The most popular choice for single flights of stairs. Ready for installation next-day.</p>
                 </div>
-                <div className="h-[200px] md:h-[220px] px-6 md:px-8 pb-6 md:pb-8">
+                <div className="h-[220px] md:h-[260px] px-6 md:px-8 pb-6 md:pb-8">
                   <div className="bg-white rounded-[18px] overflow-hidden h-full">
                     <img src="/figmaAssets/straight-stairlift.jpg" alt="Straight stairlift installed in a home" className="w-full h-full object-cover" />
                   </div>
