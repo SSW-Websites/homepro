@@ -1,41 +1,10 @@
 import { Label } from "@/components/ui/label";
 import { useRef } from "react";
 import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, ArrowRight } from "lucide-react";
-const IconLocal = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 4L4 18V44H18V30H30V44H44V18L24 4Z" stroke="#0c3254" strokeWidth="2.5" strokeLinejoin="round" fill="none"/>
-    <circle cx="24" cy="22" r="5" stroke="#0c3254" strokeWidth="2.5" fill="none"/>
-    <path d="M14 28C14 28 14 22 24 22C34 22 34 28 34 28" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-    <path d="M6 18C6 14 6 12 6 10" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M2 22C2 16 4 12 6 10M6 10C8 12 10 16 10 22" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-  </svg>
-);
-
-const IconBadge = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 2L29.5 8.5L38 7L37.5 16L44 21L39 28L41 37L32 37.5L27.5 45L24 38L20.5 45L16 37.5L7 37L9 28L4 21L10.5 16L10 7L18.5 8.5L24 2Z" stroke="#0c3254" strokeWidth="2.5" strokeLinejoin="round" fill="none"/>
-    <path d="M16 24L21 29L32 18" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const IconWrench = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.5 39.5L28 20" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M30 18C30 12 34 6 42 6C42 6 40 14 34 18C34 18 42 20 42 28C34 28 30 24 30 18Z" stroke="#0c3254" strokeWidth="2.5" strokeLinejoin="round" fill="none"/>
-    <rect x="5" y="36" width="7" height="7" rx="1" transform="rotate(-45 8.5 39.5)" stroke="#0c3254" strokeWidth="2.5" fill="none"/>
-  </svg>
-);
-
-const IconPeople = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="14" r="5" stroke="#0c3254" strokeWidth="2.5" fill="none"/>
-    <path d="M14 34C14 28 18 24 24 24C30 24 34 28 34 34" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-    <circle cx="10" cy="18" r="4" stroke="#0c3254" strokeWidth="2.5" fill="none"/>
-    <path d="M2 36C2 31 5 28 10 28" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-    <circle cx="38" cy="18" r="4" stroke="#0c3254" strokeWidth="2.5" fill="none"/>
-    <path d="M46 36C46 31 43 28 38 28" stroke="#0c3254" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-  </svg>
-);
+import iconLocal from "@assets/Icon_(1)_1775843559607.png";
+import iconBadge from "@assets/Icon_(2)_1775843559614.png";
+import iconPeople from "@assets/Icon_(3)_1775843559614.png";
+import iconWrench from "@assets/Icon_1775843559614.png";
 
 const formFields = [
   { id: "fullName", label: "FULL NAME", placeholder: "John Doe", type: "text" },
@@ -53,10 +22,10 @@ const stats = [
 ];
 
 const trustFeatures = [
-  { Icon: IconLocal, title: "Local team", desc: "Not a franchise, but your neighbors who care." },
-  { Icon: IconBadge, title: "Harmar Specialists", desc: "Installing only the industry gold-standard." },
-  { Icon: IconWrench, title: "Expert Installation", desc: "Factory-trained technicians for every job." },
-  { Icon: IconPeople, title: "Ongoing Support", desc: "We're here for the life of your lift." },
+  { icon: iconLocal, title: "Local team", desc: "Not a franchise, but your neighbors who care." },
+  { icon: iconBadge, title: "Harmar Specialists", desc: "Installing only the industry gold-standard." },
+  { icon: iconWrench, title: "Expert Installation", desc: "Factory-trained technicians for every job." },
+  { icon: iconPeople, title: "Ongoing Support", desc: "We're here for the life of your lift." },
 ];
 
 const roadmapSteps = [
@@ -197,8 +166,8 @@ export const MacbookPro = (): JSX.Element => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 {trustFeatures.map((feat) => (
                   <div key={feat.title} className="flex gap-4 items-start">
-                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
-                      <feat.Icon />
+                    <div className="w-10 flex-shrink-0 flex items-center justify-center mt-1">
+                      <img src={feat.icon} alt="" className="w-full h-auto" />
                     </div>
                     <div>
                       <h3 className="font-bold text-[#1a1c1c] text-lg font-['Plus_Jakarta_Sans',Helvetica]">{feat.title}</h3>
