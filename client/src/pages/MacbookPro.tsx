@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
-import { useRef } from "react";
-import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck } from "lucide-react";
+import { useRef, useState } from "react";
+import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -61,29 +61,46 @@ const faqs = [
 export const MacbookPro = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToQuoteForm = () => {
     quoteFormRef.current?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
 
   return (
     <div className="bg-[#f9f9f9] overflow-hidden w-full min-h-screen flex flex-col">
-      <header>
+      <header className="sticky top-0 z-50">
         <div className="w-full bg-[#0c3254] py-4 px-4" data-testid="announcement-bar">
           <p className="text-white text-center text-xs sm:text-sm md:text-lg tracking-[1.84px] leading-snug font-normal font-['Inter',Helvetica]">
             LOCAL STAIRLIFT SPECIALISTS | NO-PRESSURE, EVER | FAST INSTALLATION AVAILABLE
           </p>
         </div>
-        <nav className="w-full bg-[#f3f3f3] py-6 md:py-8 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4" data-testid="nav-bar">
-          <img className="h-12 md:h-14 object-contain" alt="HomePro Stairlifts logo" src="/figmaAssets/homepronewlogo-1920w-1.png" />
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <a href="tel:6789099558" data-testid="link-call-header" className="flex items-center justify-center px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
-              CALL NOW 678-909-9558
-            </a>
-            <button onClick={scrollToQuoteForm} data-testid="button-quote-header" className="flex items-center justify-center px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
-              GET YOUR FREE QUOTE
+        <nav className="w-full bg-[#f3f3f3] px-4 md:px-12" data-testid="nav-bar">
+          <div className="flex items-center justify-between py-4 md:py-6">
+            <img className="h-12 md:h-14 object-contain" alt="HomePro Stairlifts logo" src="/figmaAssets/homepronewlogo-1920w-1.png" />
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2" data-testid="button-hamburger" aria-label="Toggle menu">
+              {mobileMenuOpen ? <X className="w-7 h-7 text-[#0c3254]" /> : <Menu className="w-7 h-7 text-[#0c3254]" />}
             </button>
+            <div className="hidden lg:flex items-center gap-3">
+              <a href="tel:6789099558" data-testid="link-call-header" className="flex items-center justify-center px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+                CALL NOW 678-909-9558
+              </a>
+              <button onClick={scrollToQuoteForm} data-testid="button-quote-header" className="flex items-center justify-center px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
+                GET YOUR FREE QUOTE
+              </button>
+            </div>
           </div>
+          {mobileMenuOpen && (
+            <div className="lg:hidden flex flex-col items-center gap-3 pb-4" data-testid="mobile-menu">
+              <a href="tel:6789099558" onClick={() => setMobileMenuOpen(false)} data-testid="link-call-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+                CALL NOW 678-909-9558
+              </a>
+              <button onClick={scrollToQuoteForm} data-testid="button-quote-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
+                GET YOUR FREE QUOTE
+              </button>
+            </div>
+          )}
         </nav>
       </header>
 
