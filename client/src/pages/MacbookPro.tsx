@@ -5,6 +5,7 @@ import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
 import iconWrench from "@assets/Icon_1775843559614.png";
+import usfcrBadge from "@assets/image_19_1775852998661.png";
 
 const formFields = [
   { id: "fullName", label: "FULL NAME", placeholder: "John Doe", type: "text" },
@@ -91,7 +92,7 @@ export const MacbookPro = (): JSX.Element => {
         <section className="relative w-full" data-testid="section-hero">
           <img className="absolute inset-0 w-full h-full object-cover" alt="" src="/figmaAssets/screenshot-2026-04-02-at-11-53-42-am-1.png" />
           <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-20 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-12 pt-12 md:pt-20 pb-8 md:pb-12 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
             <div className="flex-1 flex flex-col gap-6 md:gap-8 max-w-2xl">
               <h1 className="font-semibold text-white text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight font-['Sofia_Pro-SemiBold',Helvetica]">
                 The Stairs Shouldn&apos;t Decide Whether You Stay in Your Home.
@@ -102,26 +103,29 @@ export const MacbookPro = (): JSX.Element => {
               <a href="tel:6789099558" data-testid="link-call-hero" className="inline-flex items-center justify-center w-fit px-8 sm:px-10 py-4 sm:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-base sm:text-lg md:text-xl tracking-wide font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
                 CALL NOW 678-909-9558
               </a>
-              <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit" aria-label="Google customer rating">
-                <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
-                <div className="flex items-center gap-3 px-5 py-4">
-                  <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
-                  <div className="flex flex-col gap-1.5">
-                    <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
-                    <div className="flex items-center gap-3">
-                      <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
-                      <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
-                        {stars.map((star) => (
-                          <div key={star} className="w-6 h-6">
-                            <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
-                          </div>
-                        ))}
+              <div className="flex items-center gap-4 flex-wrap">
+                <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit" aria-label="Google customer rating">
+                  <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
+                  <div className="flex items-center gap-3 px-5 py-4">
+                    <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
+                    <div className="flex flex-col gap-1.5">
+                      <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
+                      <div className="flex items-center gap-3">
+                        <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
+                        <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
+                          {stars.map((star) => (
+                            <div key={star} className="w-6 h-6">
+                              <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
+                            </div>
+                          ))}
+                        </div>
                       </div>
+                      <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                     </div>
-                    <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                   </div>
-                </div>
-              </aside>
+                </aside>
+                <img className="w-[110px] h-auto" alt="USFCR Verified Vendor 2025" src={usfcrBadge} data-testid="img-usfcr-badge" />
+              </div>
             </div>
             <div ref={quoteFormRef} className="w-full lg:w-[480px] xl:w-[520px] flex-shrink-0 scroll-mt-8" data-testid="section-quote-form">
               <div className="flex flex-col gap-3 p-8 md:p-9 bg-white rounded-2xl shadow-xl border border-[#c3c6d64c]">
@@ -151,9 +155,9 @@ export const MacbookPro = (): JSX.Element => {
                   </>
                 )}
               </div>
+              <p className="text-center text-white text-sm sm:text-base md:text-xl font-['Inter',Helvetica] pt-4">Free In-Home Visit &nbsp;|&nbsp; Free Quote</p>
             </div>
           </div>
-          <p className="relative z-10 text-center text-white text-sm sm:text-base md:text-xl font-['Inter',Helvetica] pb-8 px-4">Free In-Home Visit &nbsp;|&nbsp; Free Quote</p>
         </section>
 
         {/* Stats Section */}
