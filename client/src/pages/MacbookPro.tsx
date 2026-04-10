@@ -22,10 +22,10 @@ const stats = [
 ];
 
 const trustFeatures = [
-  { icon: iconLocal, title: "Local team", desc: "Not a franchise, but your neighbors who care." },
+  { icon: iconPeople, title: "Local team", desc: "Not a franchise, but your neighbors who care." },
   { icon: iconBadge, title: "Harmar Specialists", desc: "Installing only the industry gold-standard." },
   { icon: iconWrench, title: "Expert Installation", desc: "Factory-trained technicians for every job." },
-  { icon: iconPeople, title: "Ongoing Support", desc: "We're here for the life of your lift." },
+  { icon: iconLocal, title: "Ongoing Support", desc: "We're here for the life of your lift." },
 ];
 
 const roadmapSteps = [
@@ -166,7 +166,7 @@ export const MacbookPro = (): JSX.Element => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 {trustFeatures.map((feat) => (
                   <div key={feat.title} className="flex gap-4 items-start">
-                    <div className="w-10 flex-shrink-0 flex items-center justify-center mt-1">
+                    <div className="w-8 flex-shrink-0 flex items-center justify-center mt-1">
                       <img src={feat.icon} alt="" className="w-full h-auto" />
                     </div>
                     <div>
