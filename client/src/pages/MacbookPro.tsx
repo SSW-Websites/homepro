@@ -223,7 +223,7 @@ export const MacbookPro = (): JSX.Element => {
               </h2>
               <div className="flex flex-col gap-10">
                 {[
-                  { icon: iconPeople, title: "Local Team, Not a Call Center", desc: "When you call us, you speak to someone who knows your neighborhood and can be at your door within 24 hours." },
+                  { icon: "/figmaAssets/icon-local-team-new.png", title: "Local Team, Not a Call Center", desc: "When you call us, you speak to someone who knows your neighborhood and can be at your door within 24 hours." },
                   { icon: "/figmaAssets/icon-hand-heart.png", title: "No-Pressure Guidance", desc: "We provide the facts and the figures. You make the decision on your own timeline. No aggressive follow-ups." },
                   { icon: "/figmaAssets/icon-lightning.png", title: "The Fast Path to Safety", desc: "From first call to full installation, we prioritize speed without sacrificing the quality of the fit." },
                 ].map((item) => (
