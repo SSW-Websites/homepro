@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { useRef } from "react";
-import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, ArrowRight } from "lucide-react";
+import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -326,9 +326,6 @@ export const MacbookPro = (): JSX.Element => {
                   Choose the lift that perfectly matches your home&apos;s architecture.
                 </p>
               </div>
-              <a href="tel:6789099558" className="flex items-center gap-2 text-[#0c3254] font-bold text-base md:text-lg font-['Manrope',Helvetica] hover:underline whitespace-nowrap" data-testid="link-view-models">
-                View Models <ArrowRight className="w-5 h-4" />
-              </a>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-[1.7fr_1fr] gap-6" data-testid="product-grid">
               <div className="bg-[#f9f9f9] rounded-[40px] md:rounded-[46px] overflow-hidden flex flex-col" data-testid="card-product-curved">
