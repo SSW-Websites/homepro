@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { useRef, useState } from "react";
-import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X } from "lucide-react";
+import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
 import iconPeople from "@assets/Icon_(3)_1775843559614.png";
@@ -60,8 +60,17 @@ const faqs = [
 
 export const MacbookPro = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
+  const reviewSliderRef = useRef<HTMLDivElement>(null);
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollReview = (direction: "left" | "right") => {
+    const slider = reviewSliderRef.current;
+    if (!slider) return;
+    const cardWidth = slider.querySelector("div")?.offsetWidth || 300;
+    const gap = 16;
+    slider.scrollBy({ left: direction === "left" ? -(cardWidth + gap) : cardWidth + gap, behavior: "smooth" });
+  };
 
   const scrollToQuoteForm = () => {
     quoteFormRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -353,27 +362,37 @@ export const MacbookPro = (): JSX.Element => {
                 </div>
               ))}
             </div>
-            <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scrollbar-hide">
-              {[1,2,3].map((i) => (
-                <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 border border-[#eee] snap-center flex-shrink-0 w-[85vw]" data-testid={`card-review-mobile-${i}`}>
-                  <div className="flex gap-0.5 mb-4">
-                    {[1,2,3,4,5].map((s) => (
-                      <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    ))}
-                  </div>
-                  <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
-                  <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed mb-6">
-                    The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
-                      <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
+            <div className="md:hidden">
+              <div ref={reviewSliderRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scrollbar-hide">
+                {[1,2,3].map((i) => (
+                  <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 border border-[#eee] snap-center flex-shrink-0 w-[85vw]" data-testid={`card-review-mobile-${i}`}>
+                    <div className="flex gap-0.5 mb-4">
+                      {[1,2,3,4,5].map((s) => (
+                        <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                      ))}
                     </div>
+                    <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
+                    <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed mb-6">
+                      The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div>
+                        <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
+                        <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
+                      </div>
+                    </div>
+                    <img src="/figmaAssets/reviewer-avatar.png" alt="Nathan Scott" className="w-8 h-8 rounded-full mt-3" />
                   </div>
-                  <img src="/figmaAssets/reviewer-avatar.png" alt="Nathan Scott" className="w-8 h-8 rounded-full mt-3" />
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="flex justify-center gap-4 pt-2">
+                <button onClick={() => scrollReview("left")} className="w-10 h-10 rounded-full border border-[#0c3254] flex items-center justify-center hover:bg-[#0c3254] hover:text-white transition-colors text-[#0c3254]" data-testid="button-review-prev" aria-label="Previous review">
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button onClick={() => scrollReview("right")} className="w-10 h-10 rounded-full border border-[#0c3254] flex items-center justify-center hover:bg-[#0c3254] hover:text-white transition-colors text-[#0c3254]" data-testid="button-review-next" aria-label="Next review">
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
