@@ -264,7 +264,7 @@ export const MacbookPro = (): JSX.Element => {
               {roadmapSteps.map((step) => {
                 const Icon = step.icon;
                 return (
-                  <div key={step.title} className="bg-white rounded-xl border-t-4 border-[#0c3254] p-6 md:p-8 shadow-md flex flex-col gap-3" data-testid={`step-${step.title.split('.')[0].trim()}`}>
+                  <div key={step.title} className="bg-white rounded-xl border-t-4 border-[#0c3254] p-6 md:p-8 shadow-md flex flex-col gap-3 items-center text-center lg:items-start lg:text-left" data-testid={`step-${step.title.split('.')[0].trim()}`}>
                     <Icon className="w-7 h-7 text-[#0c3254]" />
                     <h3 className="text-[#1a1c1c] text-lg md:text-xl font-normal font-['Inter',Helvetica] pt-2">{step.title}</h3>
                     <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed">{step.desc}</p>
