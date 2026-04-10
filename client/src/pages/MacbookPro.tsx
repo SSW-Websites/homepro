@@ -452,7 +452,7 @@ export const MacbookPro = (): JSX.Element => {
         <section className="w-full bg-[#f9f9f9] py-14 md:py-20 px-4 md:px-12" data-testid="section-faq">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-bold text-[#0c3254] text-2xl sm:text-3xl md:text-[45px] text-center font-['Plus_Jakarta_Sans',Helvetica] mb-10 md:mb-14">
-              Clear Answers for Your Peace of Mind
+              Clear Answers for Your <br className="lg:hidden" />Peace of Mind
             </h2>
             <div className="flex flex-col gap-6 md:gap-8">
               {faqs.map((faq) => (
