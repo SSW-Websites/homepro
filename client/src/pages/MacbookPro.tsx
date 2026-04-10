@@ -326,7 +326,7 @@ export const MacbookPro = (): JSX.Element => {
                   <h3 className="font-semibold text-white text-xl md:text-[28px] leading-tight font-['Poppins',Helvetica] mb-3">Straight Stair Lifts</h3>
                   <p className="text-white/80 text-base md:text-xl font-['Public_Sans',Helvetica] leading-relaxed">The most popular choice for single flights of stairs. Ready for installation next-day.</p>
                 </div>
-                <div className="h-[220px] md:h-[260px] px-6 md:px-8 pb-6 md:pb-8">
+                <div className="h-[260px] md:h-[340px] px-6 md:px-8 pb-6 md:pb-8">
                   <div className="bg-white rounded-[18px] overflow-hidden h-full">
                     <img src="/figmaAssets/straight-stairlift.jpg" alt="Straight stairlift installed in a home" className="w-full h-full object-cover" />
                   </div>
