@@ -197,3 +197,11 @@
     transform: translateY(calc(-100% - var(--gap)));
   }
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
