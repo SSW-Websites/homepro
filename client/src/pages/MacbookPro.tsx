@@ -217,22 +217,22 @@ export const MacbookPro = (): JSX.Element => {
         {/* Trust Section */}
         <section className="w-full bg-[#f9f9f9] py-14 md:py-20 px-4 md:px-12" data-testid="section-trust">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-            <div className="flex-1 max-w-2xl">
+            <div className="flex-1 max-w-2xl text-center lg:text-left">
               <h2 className="font-semibold text-[#0c3254] text-2xl sm:text-3xl md:text-[42px] leading-snug font-['Poppins',Helvetica] mb-6">
                 Trusted by families who want a safer way to stay at home
               </h2>
               <p className="text-[#434654] text-base md:text-lg leading-relaxed font-['Inter',Helvetica] mb-8">
                 We&apos;re a local team of licensed mobility specialists who do one thing well: help you figure out the safest, most practical solution for your unique home and needs. No corporate bureaucracy, just honest help.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 gap-6 md:gap-8">
                 {trustFeatures.map((feat) => (
-                  <div key={feat.title} className="flex gap-4 items-start">
-                    <div className="w-8 flex-shrink-0 flex items-center justify-center mt-1">
+                  <div key={feat.title} className="flex gap-3 items-start text-left">
+                    <div className="w-7 flex-shrink-0 flex items-center justify-center mt-1">
                       <img src={feat.icon} alt="" className="w-full h-auto" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#1a1c1c] text-lg font-['Plus_Jakarta_Sans',Helvetica]">{feat.title}</h3>
-                      <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">{feat.desc}</p>
+                      <h3 className="font-bold text-[#1a1c1c] text-sm sm:text-base lg:text-lg font-['Plus_Jakarta_Sans',Helvetica]">{feat.title}</h3>
+                      <p className="text-[#434654] text-xs sm:text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">{feat.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -246,7 +246,7 @@ export const MacbookPro = (): JSX.Element => {
                 <h3 className="font-bold text-[#1a1c1c] text-xl md:text-2xl font-['Plus_Jakarta_Sans',Helvetica] pt-2">Start with a Conversation</h3>
                 <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">No high-pressure sales. Just a local expert answering your questions.</p>
                 <a href="tel:6789099558" data-testid="link-speak-expert" className="w-full py-4 bg-[#eb5c44] rounded-full font-semibold text-white text-base md:text-lg text-center hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica] block">
-                  Speak to an Expert
+                  CALL NOW 678-909-9558
                 </a>
               </div>
             </div>
