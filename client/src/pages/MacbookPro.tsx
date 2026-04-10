@@ -350,7 +350,7 @@ export const MacbookPro = (): JSX.Element => {
         </section>
 
         {/* FAQ Section */}
-        <section className="w-full bg-[#f3f3f3] py-14 md:py-20 px-4 md:px-12" data-testid="section-faq">
+        <section className="w-full bg-[#f9f9f9] py-14 md:py-20 px-4 md:px-12" data-testid="section-faq">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-bold text-[#0c3254] text-2xl sm:text-3xl md:text-[45px] text-center font-['Plus_Jakarta_Sans',Helvetica] mb-10 md:mb-14">
               Clear Answers for Your Peace of Mind
