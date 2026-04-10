@@ -26,6 +26,14 @@ A lead-generation landing page for a local stairlift installation business, migr
 - "Get Your Free Quote" button scrolls to lead capture form
 - Google Rating badge (4.9 stars)
 - Semantic HTML with accessibility attributes
+- Stats section (27,000+ customers, 8,000+ zip codes, 4.9/5 rating, 1,000+ reviews)
+- Trust section with feature grid and "Start with a Conversation" card
+- 6-step roadmap section (dark blue background)
+- Product showcase with 3 product cards (Straight, Curved, Outdoor)
+- Model comparison table
+- FAQ section with 4 questions/answers
+- Final CTA section with Call Now and Get Quote buttons
+- Footer with copyright
 
 ## Scripts
 - `npm run dev` - Start dev server (port 5000)
