@@ -70,7 +70,7 @@ export const MacbookPro = (): JSX.Element => {
 
   return (
     <div className="bg-[#f9f9f9] w-full min-h-screen flex flex-col overflow-x-hidden">
-      <header className="sticky top-0 z-50">
+      <header className="fixed top-0 left-0 right-0 z-50">
         <div className="w-full bg-[#0c3254] py-4 px-4" data-testid="announcement-bar">
           <p className="text-white text-center text-xs sm:text-sm md:text-lg tracking-[1.84px] leading-snug font-normal font-['Inter',Helvetica]">
             LOCAL STAIRLIFT SPECIALISTS | NO-PRESSURE, EVER | FAST INSTALLATION AVAILABLE
@@ -103,6 +103,8 @@ export const MacbookPro = (): JSX.Element => {
           )}
         </nav>
       </header>
+
+      <div className="h-[120px] md:h-[130px]" aria-hidden="true" />
 
       <main>
         {/* Hero Section */}
