@@ -30,7 +30,7 @@ export async function registerRoutes(
     if (accept.includes("application/json")) {
       return res.status(201).json(lead);
     }
-    return res.redirect("/?submitted=1");
+    return res.redirect("/thank-you");
   });
 
   app.get("/api/leads", async (_req, res) => {
