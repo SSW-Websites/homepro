@@ -4,7 +4,7 @@ export const Disqualify = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="bg-[#f9f9f9] w-full min-h-screen flex flex-col overflow-x-hidden">
+    <div className="bg-[#f9f9f9] w-full overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="w-full bg-[#0c3254] py-4 px-4" data-testid="announcement-bar">
           <p className="text-white text-center text-xs sm:text-sm md:text-lg tracking-[1.84px] leading-snug font-normal font-['Inter',Helvetica]">
@@ -20,7 +20,7 @@ export const Disqualify = (): JSX.Element => {
 
       <div className="h-[120px] md:h-[130px]" aria-hidden="true" />
 
-      <main className="flex-1">
+      <main>
         <section className="relative w-full bg-[#f9f9f9]" data-testid="section-hero">
           <div ref={quoteFormRef} className="w-full max-w-3xl mx-auto px-4 md:px-8 pt-16 md:pt-24 pb-16 md:pb-24 flex flex-col items-center text-center gap-5">
             <h1 className="font-bold text-[#0c3254] text-4xl sm:text-5xl md:text-[52px] leading-tight font-['Sofia_Pro-SemiBold',Helvetica]">
