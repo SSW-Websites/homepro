@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 const STEPS = [
   {
-    name: "who_for",
+    name: "who_is_this_stairlift_for",
     question: "Who is this stairlift for?",
     options: ["For me", "For my parent", "For my spouse", "For another family member"],
   },
