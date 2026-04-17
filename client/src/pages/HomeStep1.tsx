@@ -63,57 +63,72 @@ export default function HomeStep1() {
         </nav>
       </header>
 
-      {/* Main */}
-      <main className="flex flex-col items-center px-4 pt-16 pb-20">
-        {!isContactStep ? (
-          <>
-            <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight">
-              {currentStep.question}
-            </h1>
+      {/* The form is mounted from the very start so the GHL tracking script can register all fields. */}
+      <form action="/api/leads" method="POST" className="contents">
+        {/* Real radio inputs for each question — kept off-screen but inside the form. */}
+        <div className="sr-only" aria-hidden="true">
+          {STEPS.map((s) =>
+            s.options.map((opt) => (
+              <label key={`${s.name}-${opt}`}>
+                <input
+                  type="radio"
+                  name={s.name}
+                  value={opt}
+                  checked={answers[s.name] === opt}
+                  onChange={() => setAnswers((prev) => ({ ...prev, [s.name]: opt }))}
+                  tabIndex={-1}
+                />
+                {opt}
+              </label>
+            ))
+          )}
+        </div>
 
-            {/* Card */}
-            <div className="w-full max-w-[320px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
-                  {stepLabel}
-                </span>
-                <div className="flex-1 flex items-center gap-1">
-                  <div className="h-[3px] w-8 bg-[#0c3254] rounded-full" />
-                  <div className="flex-1 h-[3px] bg-[#d1d5db] rounded-full" />
+        {/* Main */}
+        <main className="flex flex-col items-center px-4 pt-16 pb-20">
+          {!isContactStep ? (
+            <>
+              <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight">
+                {currentStep.question}
+              </h1>
+
+              {/* Card */}
+              <div className="w-full max-w-[320px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
+                    {stepLabel}
+                  </span>
+                  <div className="flex-1 flex items-center gap-1">
+                    <div className="h-[3px] w-8 bg-[#0c3254] rounded-full" />
+                    <div className="flex-1 h-[3px] bg-[#d1d5db] rounded-full" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  {currentStep.options.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => handleOptionClick(currentStep.name, option)}
+                      data-testid={`option-${option.toLowerCase().replace(/\s/g, "-").replace(/[^a-z0-9-]/g, "")}`}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-colors font-['Inter',Helvetica] text-sm font-normal
+                        ${selected === option
+                          ? "bg-[#0c3254] border-[#0c3254] text-white"
+                          : "bg-white border-[#d1d5db] text-[#1a1c1c] hover:border-[#0c3254]"
+                        }`}
+                    >
+                      <span>{option}</span>
+                      <ChevronRight className={`w-4 h-4 flex-shrink-0 ${selected === option ? "text-white" : "text-[#9ca3af]"}`} />
+                    </button>
+                  ))}
                 </div>
               </div>
-
-              <div className="flex flex-col gap-2">
-                {currentStep.options.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => handleOptionClick(currentStep.name, option)}
-                    data-testid={`option-${option.toLowerCase().replace(/\s/g, "-").replace(/[^a-z0-9-]/g, "")}`}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-colors font-['Inter',Helvetica] text-sm font-normal
-                      ${selected === option
-                        ? "bg-[#0c3254] border-[#0c3254] text-white"
-                        : "bg-white border-[#d1d5db] text-[#1a1c1c] hover:border-[#0c3254]"
-                      }`}
-                  >
-                    <span>{option}</span>
-                    <ChevronRight className={`w-4 h-4 flex-shrink-0 ${selected === option ? "text-white" : "text-[#9ca3af]"}`} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight max-w-2xl">
-              Where should we send your recommendation?
-            </h1>
-
-            <form action="/api/leads" method="POST" className="w-full flex flex-col items-center">
-              {/* Hidden inputs with the answers from previous steps */}
-              {STEPS.map((s) => (
-                <input key={s.name} type="hidden" name={s.name} value={answers[s.name] || ""} />
-              ))}
+            </>
+          ) : (
+            <>
+              <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight max-w-2xl">
+                Where should we send your recommendation?
+              </h1>
 
               {/* Card */}
               <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
@@ -153,10 +168,10 @@ export default function HomeStep1() {
                   className="w-full py-4 bg-[#0c3254] rounded-full font-semibold text-white text-xs tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#0a2a47] transition-colors cursor-pointer"
                 />
               </div>
-            </form>
-          </>
-        )}
-      </main>
+            </>
+          )}
+        </main>
+      </form>
 
       {/* Footer */}
       <footer className="w-full bg-[#f8fafc] border-t border-[#e2e8f0] py-10 md:py-14 px-4" data-testid="footer">
