@@ -8,6 +8,21 @@ const stats = [
   { value: "1,000+", label: "Genuine Reviews" },
 ];
 
+const reviews = [
+  {
+    name: "Lindie Dordal",
+    text: "I normally don't give Google reviews unless I receive 5 star service. We purchased our stairlift two years ago and it has been life-changing! Rhonda has treated us like family and has followed up making sure we are comfortable with our purchase, and staying safe in our home. Excellent customer service! I highly recommend Home Pro Mobility and Rhonda to anyone looking for a stairlift in the future.",
+  },
+  {
+    name: "Allen Smith",
+    text: "Had Emmanuel from HomePro Mobility come out today. Amazing young man. One of the nicest people you will ever meet. Really knows everything about their product and how to get you the best plan for your situation. Emmanuel made this whole process so much easier than I had imagined it would be. Thanks for all your help. This is going to make life for my wife so much easier and safer.",
+  },
+  {
+    name: "Rodney Sanders",
+    text: "Ben Schaefer did an outstanding job and made the whole process easy from start to finish. He was professional, knowledgeable, and took the time to explain everything clearly. You can tell he genuinely cares about doing the job right and making sure his customers are comfortable and confident with their mobility solutions. The installation was smooth, and he paid close attention to detail. I highly recommend Ben at HomePro Mobility to anyone looking for reliable service and a trustworthy professional.",
+  },
+];
+
 
 export const HomeStep = (): JSX.Element => {
   const quoteFormRef = useRef<HTMLDivElement>(null);
@@ -51,7 +66,7 @@ export const HomeStep = (): JSX.Element => {
               If the stairs have cut off part of your home, this quick survey helps you understand what may fit your space and what the next step could look like.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mt-2">
-              <a href="#" data-testid="link-survey-hero" className="px-8 py-4 bg-[#eb5c44] rounded-full font-semibold text-white text-sm md:text-base tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
+              <a href="/home-step-1" data-testid="link-survey-hero" className="px-8 py-4 bg-[#eb5c44] rounded-full font-semibold text-white text-sm md:text-base tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
                 ANSWER A FEW QUICK QUESTIONS
               </a>
               <span className="text-white font-semibold text-sm uppercase tracking-widest font-['Inter',Helvetica]">OR</span>
@@ -98,8 +113,8 @@ export const HomeStep = (): JSX.Element => {
               </button>
             </div>
             <div className="hidden md:grid md:grid-cols-3 gap-6">
-              {[1,2,3].map((i) => (
-                <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 md:p-8 border border-[#eee]" data-testid={`card-review-${i}`}>
+              {reviews.map((r, i) => (
+                <div key={r.name} className="bg-[#f9f9f9] rounded-2xl p-6 md:p-8 border border-[#eee]" data-testid={`card-review-${i + 1}`}>
                   <div className="flex gap-0.5 mb-4">
                     {[1,2,3,4,5].map((s) => (
                       <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
@@ -107,12 +122,11 @@ export const HomeStep = (): JSX.Element => {
                   </div>
                   <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
                   <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed mb-6">
-                    The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                    {r.text}
                   </p>
                   <div className="flex items-center gap-3">
                     <div>
-                      <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
-                      <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
+                      <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">{r.name}</p>
                     </div>
                   </div>
                 </div>
@@ -120,8 +134,8 @@ export const HomeStep = (): JSX.Element => {
             </div>
             <div className="md:hidden">
               <div ref={reviewSliderRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scrollbar-hide">
-                {[1,2,3].map((i) => (
-                  <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 border border-[#eee] snap-center flex-shrink-0 w-[85vw]" data-testid={`card-review-mobile-${i}`}>
+                {reviews.map((r, i) => (
+                  <div key={r.name} className="bg-[#f9f9f9] rounded-2xl p-6 border border-[#eee] snap-center flex-shrink-0 w-[85vw]" data-testid={`card-review-mobile-${i + 1}`}>
                     <div className="flex gap-0.5 mb-4">
                       {[1,2,3,4,5].map((s) => (
                         <svg key={s} className="w-5 h-5 text-[#f5a623]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
@@ -129,12 +143,11 @@ export const HomeStep = (): JSX.Element => {
                     </div>
                     <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
                     <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed mb-6">
-                      The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                      {r.text}
                     </p>
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
-                        <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
+                        <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">{r.name}</p>
                       </div>
                     </div>
                   </div>
