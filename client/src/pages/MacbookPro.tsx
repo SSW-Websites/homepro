@@ -11,7 +11,7 @@ const formFields = [
   { id: "full_name", label: "FULL NAME", placeholder: "John Doe", type: "text" },
   { id: "email", label: "EMAIL", placeholder: "john@example.com", type: "email" },
   { id: "phone", label: "PHONE NUMBER", placeholder: "(555) 000-0000", type: "tel" },
-  { id: "zip", label: "ZIP CODE", placeholder: "30301", type: "text" },
+  { id: "postal_code", label: "ZIP CODE", placeholder: "30301", type: "text" },
 ];
 
 const stars = [1, 2, 3, 4, 5];
