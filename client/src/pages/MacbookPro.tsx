@@ -193,6 +193,10 @@ export const MacbookPro = (): JSX.Element => {
                           <input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} data-testid={`input-${field.id}`} required className="w-full px-4 py-4 bg-[#eeeeee] rounded-lg text-lg font-['Inter',Helvetica] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-[#0c3254]/30" />
                         </div>
                       ))}
+                      <label className="flex items-start gap-2 text-xs text-gray-600 font-['Inter',Helvetica] leading-snug cursor-pointer">
+                        <input type="checkbox" name="opt_in" value="yes" required data-testid="checkbox-optin" className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#0c3254] cursor-pointer" />
+                        <span>I agree to receive calls, texts, and emails from HomePro Stairlifts about my quote, including via automated technology. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to unsubscribe.</span>
+                      </label>
                       <input type="submit" value="GET YOUR FREE QUOTE" data-testid="button-submit-quote" className="w-full py-4 bg-[#eb5c44] rounded-full font-bold text-white text-lg md:text-xl shadow-md hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica]" />
                     </form>
                     <p className="text-center text-[#434654] text-xs italic pt-2 font-['Inter',Helvetica]">No-pressure guarantee. We respect your privacy.</p>

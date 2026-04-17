@@ -156,7 +156,11 @@ export default function HomeStep1() {
               </div>
 
               {/* Submit button outside card */}
-              <div className="w-full max-w-[320px] mt-4">
+              <div className="w-full max-w-[480px] mt-4 flex flex-col gap-3">
+                <label className="flex items-start gap-2 text-xs text-gray-600 font-['Inter',Helvetica] leading-snug cursor-pointer">
+                  <input type="checkbox" name="opt_in" value="yes" required data-testid="checkbox-optin" className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#0c3254] cursor-pointer" />
+                  <span>I agree to receive calls, texts, and emails from HomePro Stairlifts about my quote, including via automated technology. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to unsubscribe.</span>
+                </label>
                 <input
                   type="submit"
                   value="GET MY RECOMMENDATION"
