@@ -8,6 +8,21 @@ const stats = [
   { value: "1,000+", label: "Genuine Reviews" },
 ];
 
+const reviews = [
+  {
+    name: "Lindie Dordal",
+    text: "I normally don't give Google reviews unless I receive 5 star service. We purchased our stairlift two years ago and it has been life-changing! Rhonda has treated us like family and has followed up making sure we are comfortable with our purchase, and staying safe in our home. Excellent customer service! I highly recommend Home Pro Mobility and Rhonda to anyone looking for a stairlift in the future.",
+  },
+  {
+    name: "Allen Smith",
+    text: "Had Emmanuel from HomePro Mobility come out today. Amazing young man. One of the nicest people you will ever meet. Really knows everything about their product and how to get you the best plan for your situation. Emmanuel made this whole process so much easier than I had imagined it would be. Thanks for all your help. This is going to make life for my wife so much easier and safer.",
+  },
+  {
+    name: "Rodney Sanders",
+    text: "Ben Schaefer did an outstanding job and made the whole process easy from start to finish. He was professional, knowledgeable, and took the time to explain everything clearly. You can tell he genuinely cares about doing the job right and making sure his customers are comfortable and confident with their mobility solutions. The installation was smooth, and he paid close attention to detail. I highly recommend Ben at HomePro Mobility to anyone looking for reliable service and a trustworthy professional.",
+  },
+];
+
 export const ThankYou = (): JSX.Element => {
   const reviewSliderRef = useRef<HTMLDivElement>(null);
   const scrollReview = (direction: "left" | "right") => {
@@ -83,7 +98,7 @@ export const ThankYou = (): JSX.Element => {
               </div>
             </div>
             <div className="hidden md:grid md:grid-cols-3 gap-6">
-              {[1,2,3].map((i) => (
+              {reviews.map((review, i) => (
                 <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 md:p-8 border border-[#eee]" data-testid={`card-review-${i}`}>
                   <div className="flex gap-0.5 mb-4">
                     {[1,2,3,4,5].map((s) => (
@@ -92,21 +107,15 @@ export const ThankYou = (): JSX.Element => {
                   </div>
                   <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
                   <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed mb-6">
-                    The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                    {review.text}
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
-                      <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
-                    </div>
-                  </div>
-                  <img src="/figmaAssets/reviewer-avatar.png" alt="Nathan Scott" className="w-8 h-8 rounded-full mt-3" />
+                  <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">{review.name}</p>
                 </div>
               ))}
             </div>
             <div className="md:hidden">
               <div ref={reviewSliderRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scrollbar-hide">
-                {[1,2,3].map((i) => (
+                {reviews.map((review, i) => (
                   <div key={i} className="bg-[#f9f9f9] rounded-2xl p-6 border border-[#eee] snap-center flex-shrink-0 w-[85vw]" data-testid={`card-review-mobile-${i}`}>
                     <div className="flex gap-0.5 mb-4">
                       {[1,2,3,4,5].map((s) => (
@@ -115,15 +124,9 @@ export const ThankYou = (): JSX.Element => {
                     </div>
                     <img src="/figmaAssets/google-icon.png" alt="Google" className="w-6 h-6 mb-4" />
                     <p className="text-[#434654] text-sm font-['Inter',Helvetica] leading-relaxed mb-6">
-                      The marketing campaign they created for us was outstanding, and we saw significant engagement. However, I wish they had provided more frequent updates during the process. Overall, great work! Highly recommended!
+                      {review.text}
                     </p>
-                    <div className="flex items-center gap-3">
-                      <div>
-                        <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">Nathan Scott</p>
-                        <p className="text-[#434654] text-xs font-['Inter',Helvetica]">CEO, Scott Enterprises</p>
-                      </div>
-                    </div>
-                    <img src="/figmaAssets/reviewer-avatar.png" alt="Nathan Scott" className="w-8 h-8 rounded-full mt-3" />
+                    <p className="font-semibold text-[#1a1c1c] text-sm font-['Inter',Helvetica]">{review.name}</p>
                   </div>
                 ))}
               </div>
