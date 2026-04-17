@@ -65,13 +65,13 @@ export default function HomeStep1() {
 
       {/* Main */}
       <main className="flex flex-col items-center px-4 pt-16 pb-20">
-        {!isContactStep ? (
+        {/* Survey UI (visible while not on contact step) */}
+        {!isContactStep && (
           <>
             <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight">
               {currentStep.question}
             </h1>
 
-            {/* Card */}
             <div className="w-full max-w-[320px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
@@ -103,61 +103,71 @@ export default function HomeStep1() {
               </div>
             </div>
           </>
-        ) : (
-          <>
-            <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight max-w-2xl">
-              Where should we send your recommendation?
-            </h1>
-
-            <form action="/api/leads" method="POST" className="w-full flex flex-col items-center">
-              {/* Hidden inputs with the answers from previous steps */}
-              {STEPS.map((s) =>
-                answers[s.name] ? (
-                  <input key={s.name} type="hidden" name={s.name} value={answers[s.name]} />
-                ) : null
-              )}
-
-              {/* Card */}
-              <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
-                    Step {TOTAL_STEPS}/{TOTAL_STEPS}
-                  </span>
-                  <div className="flex-1 h-[3px] bg-[#0c3254] rounded-full" />
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <label className={labelClass}>First Name</label>
-                    <input type="text" name="full_name" placeholder="Abel" required data-testid="input-firstname" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Phone Number</label>
-                    <input type="tel" name="phone" placeholder="(555) 000-0000" required data-testid="input-phone" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Email Address</label>
-                    <input type="email" name="email" placeholder="you@example.com" data-testid="input-email" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>ZIP Code</label>
-                    <input type="text" name="postal_code" placeholder="00000" required data-testid="input-zip" className={inputClass} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Submit button outside card */}
-              <div className="w-full max-w-[320px] mt-4">
-                <input
-                  type="submit"
-                  value="GET MY RECOMMENDATION"
-                  data-testid="button-submit-quote"
-                  className="w-full py-4 bg-[#0c3254] rounded-full font-semibold text-white text-xs tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#0a2a47] transition-colors cursor-pointer"
-                />
-              </div>
-            </form>
-          </>
         )}
+
+        {/* Contact heading (only on contact step) */}
+        {isContactStep && (
+          <h1 className="font-bold text-[#0c3254] text-4xl md:text-5xl text-center font-['Inter',Helvetica] mb-8 tracking-tight max-w-2xl">
+            Where should we send your recommendation?
+          </h1>
+        )}
+
+        {/* Form ALWAYS mounted from page load so the GHL tracking script attaches to it.
+            Hidden via CSS until the contact step is reached. */}
+        <form
+          action="/api/leads"
+          method="POST"
+          className="w-full flex flex-col items-center"
+          style={isContactStep ? undefined : { display: "none" }}
+          aria-hidden={!isContactStep}
+        >
+          {/* Hidden inputs with the answers from previous steps - always in DOM */}
+          {STEPS.map((s) => (
+            <input
+              key={s.name}
+              type="hidden"
+              name={s.name}
+              value={answers[s.name] || ""}
+            />
+          ))}
+
+          <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
+                Step {TOTAL_STEPS}/{TOTAL_STEPS}
+              </span>
+              <div className="flex-1 h-[3px] bg-[#0c3254] rounded-full" />
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div>
+                <label className={labelClass}>First Name</label>
+                <input type="text" name="full_name" placeholder="Abel" required={isContactStep} data-testid="input-firstname" className={inputClass} />
+              </div>
+              <div>
+                <label className={labelClass}>Phone Number</label>
+                <input type="tel" name="phone" placeholder="(555) 000-0000" required={isContactStep} data-testid="input-phone" className={inputClass} />
+              </div>
+              <div>
+                <label className={labelClass}>Email Address</label>
+                <input type="email" name="email" placeholder="you@example.com" data-testid="input-email" className={inputClass} />
+              </div>
+              <div>
+                <label className={labelClass}>ZIP Code</label>
+                <input type="text" name="postal_code" placeholder="00000" required={isContactStep} data-testid="input-zip" className={inputClass} />
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full max-w-[320px] mt-4">
+            <input
+              type="submit"
+              value="GET MY RECOMMENDATION"
+              data-testid="button-submit-quote"
+              className="w-full py-4 bg-[#0c3254] rounded-full font-semibold text-white text-xs tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#0a2a47] transition-colors cursor-pointer"
+            />
+          </div>
+        </form>
       </main>
 
       {/* Footer */}
