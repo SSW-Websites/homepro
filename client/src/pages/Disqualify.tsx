@@ -29,7 +29,7 @@ export const Disqualify = (): JSX.Element => {
             <p className="text-[#333] text-sm sm:text-base font-normal font-['Inter',Helvetica]">
               If you think we made a mistake, or rather speak with someone now, call us:
             </p>
-            <a href="tel:+16789099558" data-testid="link-call-hero" className="px-8 py-3.5 border border-[#0c3254] rounded-full font-semibold text-[#0c3254] text-sm tracking-[2px] uppercase font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            <a href="tel:6789099558" data-testid="link-call-hero" className="px-8 py-3.5 border border-[#0c3254] rounded-full font-semibold text-[#0c3254] text-sm tracking-[2px] uppercase font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
               CALL NOW 678-909-9558
             </a>
           </div>
