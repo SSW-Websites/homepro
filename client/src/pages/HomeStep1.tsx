@@ -8,12 +8,12 @@ const STEPS = [
     options: ["For me", "For my parent", "For my spouse", "For another family member"],
   },
   {
-    name: "staircase_type",
+    name: "what_kind_of_staircase_is_it",
     question: "What kind of staircase is it?",
     options: ["Straight staircase", "Curved staircase", "Outdoor staircase", "Not sure or more than one staircase"],
   },
   {
-    name: "urgency",
+    name: "how_soon_are_you_hoping_to_solve_this",
     question: "How soon are you hoping to solve this?",
     options: ["As soon as possible", "In the next few weeks", "Just researching for now", "Not sure yet"],
   },
@@ -65,23 +65,19 @@ export default function HomeStep1() {
 
       {/* The form is mounted from the very start so the GHL tracking script can register all fields. */}
       <form action="/api/leads" method="POST" className="contents">
-        {/* Real radio inputs for each question — kept off-screen but inside the form. */}
+        {/* One text input per question, kept off-screen but inside the form. */}
         <div className="sr-only" aria-hidden="true">
-          {STEPS.map((s) =>
-            s.options.map((opt) => (
-              <label key={`${s.name}-${opt}`}>
-                <input
-                  type="radio"
-                  name={s.name}
-                  value={opt}
-                  checked={answers[s.name] === opt}
-                  onChange={() => setAnswers((prev) => ({ ...prev, [s.name]: opt }))}
-                  tabIndex={-1}
-                />
-                {opt}
-              </label>
-            ))
-          )}
+          {STEPS.map((s) => (
+            <input
+              key={s.name}
+              type="text"
+              name={s.name}
+              value={answers[s.name] || ""}
+              onChange={() => {}}
+              tabIndex={-1}
+              readOnly
+            />
+          ))}
         </div>
 
         {/* Main */}
