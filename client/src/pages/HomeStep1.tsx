@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import { useLocation } from "wouter";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 
 const STEPS = [
   {
+    name: "who_for",
     question: "Who is this stairlift for?",
     options: ["For me", "For my parent", "For my spouse", "For another family member"],
   },
   {
+    name: "staircase_type",
     question: "What kind of staircase is it?",
     options: ["Straight staircase", "Curved staircase", "Outdoor staircase", "Not sure or more than one staircase"],
   },
   {
+    name: "urgency",
     question: "How soon are you hoping to solve this?",
     options: ["As soon as possible", "In the next few weeks", "Just researching for now", "Not sure yet"],
   },
@@ -30,50 +29,16 @@ const labelClass =
 
 export default function HomeStep1() {
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState<string | null>(null);
-  const [form, setForm] = useState({ firstName: "", phone: "", email: "", zip: "" });
-  const [, navigate] = useLocation();
-  const { toast } = useToast();
 
-  const mutation = useMutation({
-    mutationFn: (data: typeof form & { answers: string[] }) =>
-      apiRequest("POST", "/api/leads", {
-        full_name: data.firstName,
-        phone: data.phone,
-        email: data.email,
-        postal_code: data.zip,
-        answers: data.answers,
-      }),
-    onSuccess: () => {
-      navigate("/thank-you");
-    },
-    onError: () => {
-      toast({
-        title: "Something went wrong",
-        description: "Please call us directly at 678-909-9558.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (optionName: string, option: string) => {
     setSelected(option);
     setTimeout(() => {
-      setAnswers((prev) => [...prev, option]);
+      setAnswers((prev) => ({ ...prev, [optionName]: option }));
       setSelected(null);
       setStep((s) => s + 1);
     }, 180);
-  };
-
-  const submitForm = () => {
-    if (!form.firstName || !form.phone || !form.zip) return;
-    mutation.mutate({ ...form, answers });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    submitForm();
   };
 
   const isContactStep = step === STEPS.length;
@@ -122,7 +87,8 @@ export default function HomeStep1() {
                 {currentStep.options.map((option) => (
                   <button
                     key={option}
-                    onClick={() => handleOptionClick(option)}
+                    type="button"
+                    onClick={() => handleOptionClick(currentStep.name, option)}
                     data-testid={`option-${option.toLowerCase().replace(/\s/g, "-").replace(/[^a-z0-9-]/g, "")}`}
                     className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-colors font-['Inter',Helvetica] text-sm font-normal
                       ${selected === option
@@ -143,46 +109,51 @@ export default function HomeStep1() {
               Where should we send your recommendation?
             </h1>
 
-            {/* Card */}
-            <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
-                  Step {TOTAL_STEPS}/{TOTAL_STEPS}
-                </span>
-                <div className="flex-1 h-[3px] bg-[#0c3254] rounded-full" />
+            <form action="/api/leads" method="POST" className="w-full flex flex-col items-center">
+              {/* Hidden inputs with the answers from previous steps */}
+              {STEPS.map((s) => (
+                <input key={s.name} type="hidden" name={s.name} value={answers[s.name] || ""} />
+              ))}
+
+              {/* Card */}
+              <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="text-xs font-semibold text-[#0c3254] font-['Inter',Helvetica] whitespace-nowrap">
+                    Step {TOTAL_STEPS}/{TOTAL_STEPS}
+                  </span>
+                  <div className="flex-1 h-[3px] bg-[#0c3254] rounded-full" />
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <div>
+                    <label className={labelClass}>First Name</label>
+                    <input type="text" name="full_name" placeholder="Abel" required data-testid="input-firstname" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="(555) 000-0000" required data-testid="input-phone" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Email Address</label>
+                    <input type="email" name="email" placeholder="you@example.com" data-testid="input-email" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>ZIP Code</label>
+                    <input type="text" name="postal_code" placeholder="00000" required data-testid="input-zip" className={inputClass} />
+                  </div>
+                </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <div>
-                  <label className={labelClass}>First Name</label>
-                  <input type="text" placeholder="Abel" value={form.firstName} onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))} required data-testid="input-firstname" className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>Phone Number</label>
-                  <input type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} required data-testid="input-phone" className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>Email Address</label>
-                  <input type="email" placeholder="you@example.com" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} data-testid="input-email" className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>ZIP Code</label>
-                  <input type="text" placeholder="00000" value={form.zip} onChange={(e) => setForm((f) => ({ ...f, zip: e.target.value }))} required data-testid="input-zip" className={inputClass} />
-                </div>
-              </form>
-            </div>
-
-            {/* Submit button outside card */}
-            <div className="w-full max-w-[320px] mt-4">
-              <button
-                onClick={submitForm}
-                disabled={mutation.isPending}
-                data-testid="button-submit-quote"
-                className="w-full py-4 bg-[#0c3254] rounded-full font-semibold text-white text-xs tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#0a2a47] transition-colors disabled:opacity-60"
-              >
-                {mutation.isPending ? "Sending..." : "GET MY RECOMMENDATION"}
-              </button>
-            </div>
+              {/* Submit button outside card */}
+              <div className="w-full max-w-[320px] mt-4">
+                <input
+                  type="submit"
+                  value="GET MY RECOMMENDATION"
+                  data-testid="button-submit-quote"
+                  className="w-full py-4 bg-[#0c3254] rounded-full font-semibold text-white text-xs tracking-widest uppercase font-['Inter',Helvetica] hover:bg-[#0a2a47] transition-colors cursor-pointer"
+                />
+              </div>
+            </form>
           </>
         )}
       </main>
