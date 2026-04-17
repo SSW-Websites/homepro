@@ -111,9 +111,11 @@ export default function HomeStep1() {
 
             <form action="/api/leads" method="POST" className="w-full flex flex-col items-center">
               {/* Hidden inputs with the answers from previous steps */}
-              {STEPS.map((s) => (
-                <input key={s.name} type="hidden" name={s.name} value={answers[s.name] || ""} />
-              ))}
+              {STEPS.map((s) =>
+                answers[s.name] ? (
+                  <input key={s.name} type="hidden" name={s.name} value={answers[s.name]} />
+                ) : null
+              )}
 
               {/* Card */}
               <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
