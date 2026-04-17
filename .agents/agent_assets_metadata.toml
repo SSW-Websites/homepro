@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "qBZZlnK232ESWjM9mJV0v"
+uri = "file://docs/agent-learnings.md"
+type = "text"
+title = "Agent Learnings — Landing Pages + GHL + Vercel"
