@@ -119,7 +119,7 @@ export const MacbookPro = (): JSX.Element => {
       <main>
         {/* Hero Section */}
         <section className="relative w-full" data-testid="section-hero">
-          <img className="absolute inset-0 w-full h-full object-cover" alt="" src="/figmaAssets/screenshot-2026-04-02-at-11-53-42-am-1.png" />
+          <img className="absolute inset-0 w-full h-full object-cover" alt="" src="/figmaAssets/hero-stairlift.png" />
           <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-12 pt-12 md:pt-28 pb-8 md:pb-20 flex flex-col lg:flex-row gap-10 lg:gap-16 items-center lg:items-start">
             <div className="flex-1 flex flex-col items-center lg:items-start gap-6 md:gap-8 max-w-2xl text-center lg:text-left">
