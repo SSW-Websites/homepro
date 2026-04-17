@@ -8,10 +8,10 @@ import iconWrench from "@assets/Icon_1775843559614.png";
 import usfcrBadge from "@assets/image_19_1775852998661.png";
 
 const formFields = [
-  { id: "fullName", label: "FULL NAME", placeholder: "John Doe", type: "text" },
+  { id: "full_name", label: "FULL NAME", placeholder: "John Doe", type: "text" },
   { id: "email", label: "EMAIL", placeholder: "john@example.com", type: "email" },
-  { id: "phoneNumber", label: "PHONE NUMBER", placeholder: "(555) 000-0000", type: "tel" },
-  { id: "zipCode", label: "ZIP CODE", placeholder: "30301", type: "text" },
+  { id: "phone", label: "PHONE NUMBER", placeholder: "(555) 000-0000", type: "tel" },
+  { id: "zip", label: "ZIP CODE", placeholder: "30301", type: "text" },
 ];
 
 const stars = [1, 2, 3, 4, 5];
