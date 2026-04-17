@@ -8,12 +8,12 @@ const STEPS = [
     options: ["For me", "For my parent", "For my spouse", "For another family member"],
   },
   {
-    name: "staircase_type",
+    name: "what_kind_of_staircase_is_it",
     question: "What kind of staircase is it?",
     options: ["Straight staircase", "Curved staircase", "Outdoor staircase", "Not sure or more than one staircase"],
   },
   {
-    name: "urgency",
+    name: "how_soon_are_you_hoping_to_solve_this",
     question: "How soon are you hoping to solve this?",
     options: ["As soon as possible", "In the next few weeks", "Just researching for now", "Not sure yet"],
   },
