@@ -6,3 +6,9 @@ id = "qBZZlnK232ESWjM9mJV0v"
 uri = "file://docs/agent-learnings.md"
 type = "text"
 title = "Agent Learnings — Landing Pages + GHL + Vercel"
+
+[[outputs]]
+id = "ruERp2fKooov6-PoxC_jj"
+uri = "file://exports/agent-learnings.pdf"
+type = "pdf"
+title = "Agent Learnings — Landing Pages + GHL + Vercel (PDF)"
