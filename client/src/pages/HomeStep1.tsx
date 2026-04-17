@@ -7,6 +7,16 @@ const STEPS = [
     question: "Who is this stairlift for?",
     options: ["For me", "For my parent", "For my spouse", "For another family member"],
   },
+  {
+    name: "staircase_type",
+    question: "What kind of staircase is it?",
+    options: ["Straight staircase", "Curved staircase", "Outdoor staircase", "Not sure or more than one staircase"],
+  },
+  {
+    name: "urgency",
+    question: "How soon are you hoping to solve this?",
+    options: ["As soon as possible", "In the next few weeks", "Just researching for now", "Not sure yet"],
+  },
 ];
 
 const TOTAL_STEPS = STEPS.length + 1;
@@ -101,11 +111,9 @@ export default function HomeStep1() {
 
             <form action="/api/leads" method="POST" className="w-full flex flex-col items-center">
               {/* Hidden inputs with the answers from previous steps */}
-              {STEPS.map((s) =>
-                answers[s.name] ? (
-                  <input key={s.name} type="hidden" name={s.name} value={answers[s.name]} />
-                ) : null
-              )}
+              {STEPS.map((s) => (
+                <input key={s.name} type="hidden" name={s.name} value={answers[s.name] || ""} />
+              ))}
 
               {/* Card */}
               <div className="w-full max-w-[480px] bg-white rounded-2xl border border-[#e0e0e0] shadow-sm px-5 pt-5 pb-5">
