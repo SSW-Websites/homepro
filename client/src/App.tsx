@@ -9,12 +9,14 @@ import { MacbookPro } from "@/pages/MacbookPro";
 import { ThankYou } from "@/pages/ThankYou";
 import { Disqualify } from "@/pages/Disqualify";
 import { HomeStep } from "@/pages/HomeStep";
+import HomeStep1 from "@/pages/HomeStep1";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={MacbookPro} />
       <Route path="/home-step" component={HomeStep} />
+      <Route path="/home-step-1" component={HomeStep1} />
       <Route path="/thank-you" component={ThankYou} />
       <Route path="/disqualify" component={Disqualify} />
       <Route component={NotFound} />
