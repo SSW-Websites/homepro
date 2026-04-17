@@ -108,7 +108,7 @@ export const MacbookPro = (): JSX.Element => {
               {mobileMenuOpen ? <X className="w-7 h-7 text-[#0c3254]" /> : <Menu className="w-7 h-7 text-[#0c3254]" />}
             </button>
             <div className="hidden lg:flex items-center gap-3">
-              <a href="tel:6789099558" data-testid="link-call-header" className="flex items-center justify-center px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+              <a href="tel:+16789099558" data-testid="link-call-header" className="flex items-center justify-center px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
                 CALL NOW 678-909-9558
               </a>
               <button onClick={scrollToQuoteForm} data-testid="button-quote-header" className="flex items-center justify-center px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm md:text-base tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
@@ -118,7 +118,7 @@ export const MacbookPro = (): JSX.Element => {
           </div>
           {mobileMenuOpen && (
             <div className="lg:hidden flex flex-col items-center gap-3 pb-4" data-testid="mobile-menu">
-              <a href="tel:6789099558" onClick={() => setMobileMenuOpen(false)} data-testid="link-call-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+              <a href="tel:+16789099558" onClick={() => setMobileMenuOpen(false)} data-testid="link-call-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
                 CALL NOW 678-909-9558
               </a>
               <button onClick={scrollToQuoteForm} data-testid="button-quote-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
@@ -144,7 +144,7 @@ export const MacbookPro = (): JSX.Element => {
               <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed font-normal font-['Inter',Helvetica] max-w-xl">
                 If the stairs have cut off part of your home, talk to a real local stairlift specialist today. We&apos;ll help you understand your options and find the right next step.
               </p>
-              <a href="tel:6789099558" data-testid="link-call-hero" className="hidden lg:inline-flex items-center justify-center w-fit px-8 sm:px-10 py-4 sm:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-base sm:text-lg md:text-xl tracking-wide font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
+              <a href="tel:+16789099558" data-testid="link-call-hero" className="hidden lg:inline-flex items-center justify-center w-fit px-8 sm:px-10 py-4 sm:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-base sm:text-lg md:text-xl tracking-wide font-['Inter',Helvetica] hover:bg-[#d4503b] transition-colors cursor-pointer whitespace-nowrap">
                 CALL NOW 678-909-9558
               </a>
               <div className="hidden lg:flex items-center gap-4 flex-wrap">
@@ -270,7 +270,7 @@ export const MacbookPro = (): JSX.Element => {
                 </div>
                 <h3 className="font-bold text-[#1a1c1c] text-xl md:text-2xl font-['Plus_Jakarta_Sans',Helvetica] pt-2">Start with a Conversation</h3>
                 <p className="text-[#434654] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">No high-pressure sales. Just a local expert answering your questions.</p>
-                <a href="tel:6789099558" data-testid="link-speak-expert" className="w-full py-4 bg-[#eb5c44] rounded-full font-semibold text-white text-base md:text-lg text-center hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica] block">
+                <a href="tel:+16789099558" data-testid="link-speak-expert" className="w-full py-4 bg-[#eb5c44] rounded-full font-semibold text-white text-base md:text-lg text-center hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica] block">
                   CALL NOW 678-909-9558
                 </a>
               </div>
@@ -483,7 +483,7 @@ export const MacbookPro = (): JSX.Element => {
             </h2>
             <p className="text-[#434654] text-lg md:text-2xl lg:text-4xl font-['Inter',Helvetica] mb-8 md:mb-12">One phone call to see if your home can feel like home again.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mb-8">
-              <a href="tel:6789099558" data-testid="link-call-final" className="w-full sm:w-auto px-10 md:px-16 py-4 md:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-lg md:text-2xl uppercase text-center shadow-lg hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica]">
+              <a href="tel:+16789099558" data-testid="link-call-final" className="w-full sm:w-auto px-10 md:px-16 py-4 md:py-5 bg-[#eb5c44] rounded-full font-semibold text-white text-lg md:text-2xl uppercase text-center shadow-lg hover:bg-[#d4503b] transition-colors cursor-pointer font-['Inter',Helvetica]">
                 Call Now 678-909-9558
               </a>
               <button onClick={scrollToQuoteForm} data-testid="button-quote-final" className="w-full sm:w-auto px-10 md:px-16 py-4 md:py-5 border-2 border-[#0c3254] rounded-full font-semibold text-[#0c3254] text-lg md:text-2xl uppercase text-center hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer font-['Inter',Helvetica]">
