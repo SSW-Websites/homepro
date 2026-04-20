@@ -181,6 +181,9 @@ export default function HomeStep1() {
           <p className="text-[#64748b] text-sm md:text-base font-['Inter',Helvetica] leading-relaxed">
             &copy; 2026 HomePro Mobility Solutions. All rights reserved. Licensed &amp; Insured.
           </p>
+          <a href="https://homepromobility.com/privacy-policy/" target="_blank" rel="noopener noreferrer" data-testid="link-privacy-policy" className="inline-block mt-2 text-[#64748b] text-sm md:text-base font-['Inter',Helvetica] underline hover:text-[#0c3254] transition-colors">
+            Privacy Policy
+          </a>
         </div>
       </footer>
     </div>
