@@ -69,6 +69,7 @@ export default function HomeStep1() {
       <form action="/api/leads" method="POST" className="contents">
         {/* One text input per question, kept off-screen but inside the form. */}
         <div className="sr-only" aria-hidden="true">
+          <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
           {STEPS.map((s) => (
             <input
               key={s.name}

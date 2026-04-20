@@ -195,6 +195,9 @@ export const MacbookPro = (): JSX.Element => {
                 ) : (
                   <>
                     <form action="/api/leads" method="POST" className="flex flex-col gap-4 pt-4">
+                      <div className="sr-only" aria-hidden="true">
+                        <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
+                      </div>
                       {formFields.map((field) => (
                         <div key={field.id} className="flex flex-col gap-1">
                           <Label htmlFor={field.id} className="text-[#434654] text-sm tracking-wide font-['Inter',Helvetica]">{field.label}</Label>
