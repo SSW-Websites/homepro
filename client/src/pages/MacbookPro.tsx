@@ -1,5 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { useRef, useState } from "react";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
@@ -74,6 +75,7 @@ const faqs = [
 ];
 
 export const MacbookPro = (): JSX.Element => {
+  usePageTitle("HomePro Stairlifts | Free In-Home Quote");
   const quoteFormRef = useRef<HTMLDivElement>(null);
   const reviewSliderRef = useRef<HTMLDivElement>(null);
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";

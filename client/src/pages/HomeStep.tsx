@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 const stats = [
   { value: "27,000+", label: "Customers Served" },
@@ -25,6 +26,7 @@ const reviews = [
 
 
 export const HomeStep = (): JSX.Element => {
+  usePageTitle("Stairlift Quotes Made Easy | HomePro Stairlifts");
   const quoteFormRef = useRef<HTMLDivElement>(null);
   const reviewSliderRef = useRef<HTMLDivElement>(null);
   const scrollReview = (direction: "left" | "right") => {

@@ -1,6 +1,8 @@
 import { useRef } from "react";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 export const Disqualify = (): JSX.Element => {
+  usePageTitle("Other Options | HomePro Stairlifts");
   const quoteFormRef = useRef<HTMLDivElement>(null);
 
   return (

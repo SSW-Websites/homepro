@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 const STEPS = [
   {
@@ -28,6 +29,7 @@ const labelClass =
   "block text-[#434654] text-[10px] tracking-widest uppercase font-['Inter',Helvetica] mb-1";
 
 export default function HomeStep1() {
+  usePageTitle("Get Your Stairlift Recommendation | HomePro Stairlifts");
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState<string | null>(null);
