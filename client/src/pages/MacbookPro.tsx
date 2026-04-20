@@ -118,16 +118,14 @@ export const MacbookPro = (): JSX.Element => {
               </button>
             </div>
           </div>
-          {mobileMenuOpen && (
-            <div className="lg:hidden flex flex-col items-center gap-3 pb-4" data-testid="mobile-menu">
-              <a href="tel:+16789099558" onClick={() => setMobileMenuOpen(false)} data-testid="link-call-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
-                CALL NOW 678-909-9558
-              </a>
-              <button onClick={scrollToQuoteForm} data-testid="button-quote-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
-                GET YOUR FREE QUOTE
-              </button>
-            </div>
-          )}
+          <div className={`lg:hidden flex-col items-center gap-3 pb-4 ${mobileMenuOpen ? "flex" : "hidden"}`} data-testid="mobile-menu">
+            <a href="tel:+16789099558" onClick={() => setMobileMenuOpen(false)} data-testid="link-call-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full border border-[#0c3254] font-semibold text-[#0c3254] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0c3254] hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+              CALL NOW 678-909-9558
+            </a>
+            <button onClick={scrollToQuoteForm} data-testid="button-quote-header-mobile" className="flex items-center justify-center w-full px-8 py-3 rounded-full bg-[#0c3254] font-semibold text-[#f3f3f3] text-sm tracking-wide font-['Inter',Helvetica] hover:bg-[#0a2844] transition-colors cursor-pointer whitespace-nowrap">
+              GET YOUR FREE QUOTE
+            </button>
+          </div>
         </nav>
       </header>
 
