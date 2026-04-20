@@ -150,26 +150,34 @@ export const MacbookPro = (): JSX.Element => {
                 CALL NOW 678-909-9558
               </a>
               <div className="hidden lg:flex items-center gap-4 flex-wrap">
-                <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit" aria-label="Google customer rating">
-                  <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
-                  <div className="flex items-center gap-3 px-5 py-4">
-                    <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
-                    <div className="flex flex-col gap-1.5">
-                      <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
-                        <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
-                          {stars.map((star) => (
-                            <div key={star} className="w-6 h-6">
-                              <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
-                            </div>
-                          ))}
+                <a
+                  href="https://www.google.com/maps/place/HomePro+Mobility+Solutions+-+Mobility+Equipment+In+Georgia/@33.828611,-83.8353286,17z/data=!4m8!3m7!1s0x88f5c5a18cfe3ff3:0xe487c374ad848768!8m2!3d33.828611!4d-83.8353286!9m1!1b1!16s%2Fg%2F11nx2zng97?hl=en-AR&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-google-rating"
+                  className="block transition-transform hover:scale-[1.02]"
+                >
+                  <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit cursor-pointer" aria-label="Google customer rating">
+                    <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
+                    <div className="flex items-center gap-3 px-5 py-4">
+                      <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
+                      <div className="flex flex-col gap-1.5">
+                        <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
+                        <div className="flex items-center gap-3">
+                          <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
+                          <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
+                            {stars.map((star) => (
+                              <div key={star} className="w-6 h-6">
+                                <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
+                              </div>
+                            ))}
+                          </div>
                         </div>
+                        <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                       </div>
-                      <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                     </div>
-                  </div>
-                </aside>
+                  </aside>
+                </a>
                 <img className="w-[110px] h-auto" alt="USFCR Verified Vendor 2025" src={usfcrBadge} data-testid="img-usfcr-badge" />
               </div>
             </div>
@@ -207,26 +215,34 @@ export const MacbookPro = (): JSX.Element => {
               </div>
               <p className="text-center text-white text-sm sm:text-base md:text-xl font-['Inter',Helvetica] pt-4">Free In-Home Visit &nbsp;|&nbsp; Free Quote</p>
               <div className="flex lg:hidden items-center justify-center gap-4 flex-wrap pt-4">
-                <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit" aria-label="Google customer rating">
-                  <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
-                  <div className="flex items-center gap-3 px-5 py-4">
-                    <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
-                    <div className="flex flex-col gap-1.5">
-                      <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
-                        <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
-                          {stars.map((star) => (
-                            <div key={star} className="w-6 h-6">
-                              <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
-                            </div>
-                          ))}
+                <a
+                  href="https://www.google.com/maps/place/HomePro+Mobility+Solutions+-+Mobility+Equipment+In+Georgia/@33.828611,-83.8353286,17z/data=!4m8!3m7!1s0x88f5c5a18cfe3ff3:0xe487c374ad848768!8m2!3d33.828611!4d-83.8353286!9m1!1b1!16s%2Fg%2F11nx2zng97?hl=en-AR&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-google-rating"
+                  className="block transition-transform hover:scale-[1.02]"
+                >
+                  <aside className="inline-flex flex-col items-start justify-center bg-white rounded-lg overflow-hidden shadow-lg w-fit cursor-pointer" aria-label="Google customer rating">
+                    <div className="w-full h-1 bg-[#34a853]" aria-hidden="true" />
+                    <div className="flex items-center gap-3 px-5 py-4">
+                      <img className="w-14 h-14" alt="Google reviews icon" src="/figmaAssets/group-3.png" />
+                      <div className="flex flex-col gap-1.5">
+                        <span className="font-bold text-[--dark-grey] text-sm font-['Plus_Jakarta_Sans',Helvetica]">Google Rating</span>
+                        <div className="flex items-center gap-3">
+                          <span className="font-extrabold text-[#fea500] text-xl font-['Plus_Jakarta_Sans',Helvetica]">4.9</span>
+                          <div className="flex items-center" role="img" aria-label="4.9 out of 5 stars">
+                            {stars.map((star) => (
+                              <div key={star} className="w-6 h-6">
+                                <img className="w-full h-full" alt="" src="/figmaAssets/star-1.svg" />
+                              </div>
+                            ))}
+                          </div>
                         </div>
+                        <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                       </div>
-                      <span className="text-[--grey] text-xs font-['Plus_Jakarta_Sans',Helvetica]">See all our reviews</span>
                     </div>
-                  </div>
-                </aside>
+                  </aside>
+                </a>
                 <img className="w-[100px] h-auto" alt="USFCR Verified Vendor 2025" src={usfcrBadge} data-testid="img-usfcr-badge-mobile" />
               </div>
             </div>
