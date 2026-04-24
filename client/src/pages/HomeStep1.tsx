@@ -149,7 +149,7 @@ export default function HomeStep1() {
                   </div>
                   <div>
                     <label className={labelClass}>Email Address</label>
-                    <input type="email" name="email" placeholder="you@example.com" data-testid="input-email" className={inputClass} />
+                    <input type="email" name="email" placeholder="you@example.com" required data-testid="input-email" className={inputClass} />
                   </div>
                   <div>
                     <label className={labelClass}>ZIP Code</label>
