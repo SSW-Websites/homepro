@@ -78,23 +78,9 @@ export const MacbookPro = (): JSX.Element => {
   usePageTitle("HomePro Stairlifts | Free In-Home Quote");
   const quoteFormRef = useRef<HTMLDivElement>(null);
   const reviewSliderRef = useRef<HTMLDivElement>(null);
-  const formMountedAt = useRef<number>(Date.now());
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const form = e.currentTarget;
-    const honey = form.elements.namedItem("website") as HTMLInputElement | null;
-    if (honey && honey.value.trim() !== "") {
-      e.preventDefault();
-      return;
-    }
-    if (Date.now() - formMountedAt.current < 3000) {
-      e.preventDefault();
-      return;
-    }
-  };
 
   const scrollReview = (direction: "left" | "right") => {
     const slider = reviewSliderRef.current;
@@ -208,13 +194,9 @@ export const MacbookPro = (): JSX.Element => {
                   </div>
                 ) : (
                   <>
-                    <form action="/api/leads" method="POST" onSubmit={handleFormSubmit} className="flex flex-col gap-4 pt-4">
+                    <form action="/api/leads" method="POST" className="flex flex-col gap-4 pt-4">
                       <div className="sr-only" aria-hidden="true">
                         <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
-                      </div>
-                      <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: "1px", height: "1px", overflow: "hidden" }}>
-                        <label>Website</label>
-                        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
                       </div>
                       {formFields.map((field) => (
                         <div key={field.id} className="flex flex-col gap-1">
