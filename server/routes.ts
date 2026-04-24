@@ -8,6 +8,11 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   app.post("/api/leads", async (req, res) => {
+    // Honeypot: silently drop bots that fill the hidden "website" field
+    if (req.body.website && String(req.body.website).trim() !== "") {
+      return res.redirect("/thank-you");
+    }
+
     const data = {
       fullName: req.body.fullName || req.body.full_name || "",
       email: req.body.email || "",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { usePageTitle } from "@/hooks/use-page-title";
 
@@ -33,6 +33,20 @@ export default function HomeStep1() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState<string | null>(null);
+  const formMountedAt = useRef<number>(Date.now());
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
+    const honey = form.elements.namedItem("website") as HTMLInputElement | null;
+    if (honey && honey.value.trim() !== "") {
+      e.preventDefault();
+      return;
+    }
+    if (Date.now() - formMountedAt.current < 3000) {
+      e.preventDefault();
+      return;
+    }
+  };
 
   const handleOptionClick = (optionName: string, option: string) => {
     setSelected(option);
@@ -66,7 +80,7 @@ export default function HomeStep1() {
       </header>
 
       {/* The form is mounted from the very start so the GHL tracking script can register all fields. */}
-      <form action="/api/leads" method="POST" className="contents">
+      <form action="/api/leads" method="POST" onSubmit={handleFormSubmit} className="contents">
         {/* One text input per question, kept off-screen but inside the form. */}
         <div className="sr-only" aria-hidden="true">
           <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
@@ -81,6 +95,11 @@ export default function HomeStep1() {
               readOnly
             />
           ))}
+        </div>
+        {/* Honeypot field - hidden from users, bots will fill it */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: "1px", height: "1px", overflow: "hidden" }}>
+          <label>Website</label>
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
         </div>
 
         {/* Main */}
