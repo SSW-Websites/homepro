@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { usePageTitle } from "@/hooks/use-page-title";
+import { useRecaptchaSubmit } from "@/hooks/use-recaptcha";
 
 const STEPS = [
   {
@@ -33,6 +34,7 @@ export default function HomeStep1() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState<string | null>(null);
+  const handleRecaptchaSubmit = useRecaptchaSubmit("quiz_quote");
 
   const handleOptionClick = (optionName: string, option: string) => {
     setSelected(option);
@@ -66,10 +68,11 @@ export default function HomeStep1() {
       </header>
 
       {/* The form is mounted from the very start so the GHL tracking script can register all fields. */}
-      <form action="/api/leads" method="POST" className="contents">
+      <form action="/api/leads" method="POST" onSubmit={handleRecaptchaSubmit} className="contents">
         {/* One text input per question, kept off-screen but inside the form. */}
         <div className="sr-only" aria-hidden="true">
           <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
+          <input type="text" name="g-recaptcha-response" defaultValue="" readOnly tabIndex={-1} />
           {STEPS.map((s) => (
             <input
               key={s.name}

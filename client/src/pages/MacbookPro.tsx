@@ -1,6 +1,7 @@
 import { Label } from "@/components/ui/label";
 import { useRef, useState } from "react";
 import { usePageTitle } from "@/hooks/use-page-title";
+import { useRecaptchaSubmit } from "@/hooks/use-recaptcha";
 import { Phone, ClipboardList, FileText, Wrench, HeadphonesIcon, ShieldCheck, Menu, X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import iconLocal from "@assets/Icon_(1)_1775843559607.png";
 import iconBadge from "@assets/Icon_(2)_1775843559614.png";
@@ -81,6 +82,7 @@ export const MacbookPro = (): JSX.Element => {
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const handleRecaptchaSubmit = useRecaptchaSubmit("home_quote");
 
   const scrollReview = (direction: "left" | "right") => {
     const slider = reviewSliderRef.current;
@@ -194,9 +196,10 @@ export const MacbookPro = (): JSX.Element => {
                   </div>
                 ) : (
                   <>
-                    <form action="/api/leads" method="POST" className="flex flex-col gap-4 pt-4">
+                    <form action="/api/leads" method="POST" onSubmit={handleRecaptchaSubmit} className="flex flex-col gap-4 pt-4">
                       <div className="sr-only" aria-hidden="true">
                         <input type="text" name="lead_source" value="SSW lead" readOnly tabIndex={-1} />
+                        <input type="text" name="g-recaptcha-response" defaultValue="" readOnly tabIndex={-1} />
                       </div>
                       {formFields.map((field) => (
                         <div key={field.id} className="flex flex-col gap-1">

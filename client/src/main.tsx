@@ -4,11 +4,17 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-function loadScript(src: string) {
+function loadScript(src: string, target: "head" | "body" = "body") {
   const s = document.createElement("script");
   s.src = src;
   s.async = true;
-  document.body.appendChild(s);
+  s.defer = true;
+  document[target === "head" ? "head" : "body"].appendChild(s);
+}
+
+const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+if (recaptchaSiteKey) {
+  loadScript(`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`, "head");
 }
 
 setTimeout(() => {
